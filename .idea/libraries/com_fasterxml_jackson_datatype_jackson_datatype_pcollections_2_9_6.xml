@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="com.fasterxml.jackson.datatype:jackson-datatype-pcollections:2.9.6" type="repository">
+    <properties maven-id="com.fasterxml.jackson.datatype:jackson-datatype-pcollections:2.9.6" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/datatype/jackson-datatype-pcollections/2.9.6/jackson-datatype-pcollections-2.9.6.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/pcollections/pcollections/2.1.2/pcollections-2.1.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-core/2.9.6/jackson-core-2.9.6.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.9.6/jackson-databind-2.9.6.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-annotations/2.9.0/jackson-annotations-2.9.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

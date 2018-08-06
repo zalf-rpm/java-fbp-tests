@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="org.pcollections:pcollections:3.0.2" type="repository">
+    <properties maven-id="org.pcollections:pcollections:3.0.2" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/pcollections/pcollections/3.0.2/pcollections-3.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
