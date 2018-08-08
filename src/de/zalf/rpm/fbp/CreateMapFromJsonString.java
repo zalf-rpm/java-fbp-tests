@@ -6,13 +6,13 @@ import com.jpaulmorrison.fbp.core.engine.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
-import java.util.Map;
 import org.pcollections.HashPMap;
-import org.pcollections.PMap;
+import org.pcollections.PCollection;
+import org.pcollections.TreePVector;
 
 @ComponentDescription("Create a MAP from a JSON string")
 @InPort(value = "IN", description = "String of JSON object", type = String.class)
-@OutPort(value = "OUT", description = "Map representation of JSON object", type = PMap.class)
+@OutPort(value = "OUT", description = "Map representation of JSON object", type = PCollection.class)
 public class CreateMapFromJsonString extends Component {
     InputPort inPort;
     OutputPort outPort;
@@ -24,11 +24,18 @@ public class CreateMapFromJsonString extends Component {
         Packet p = inPort.receive();
         while (p != null) {
             String s = (String)p.getContent();
+            drop(p);
 
             try {
-                Map m = om.readValue(s, HashPMap.class);
-                drop(p);
-                Packet out = create(m);
+                Object o;
+                if(s.startsWith("{"))
+                    o = om.readValue(s, HashPMap.class);
+                else if(s.startsWith("["))
+                    o = om.readValue(s, TreePVector.class);
+                else
+                    continue;
+
+                Packet out = create(o);
                 outPort.send(out);
             } catch (IOException e) {
                 e.printStackTrace();

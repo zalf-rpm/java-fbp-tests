@@ -59,10 +59,10 @@ public class SetValueInMap extends Component {
             pathPort.close();
         }
 
-        //try to read a map packet
+        //try to read a coll packet
         Packet mp = mapPort.receive();
         if (mp == null) {
-            //makes no sense to continue (read values) without map, so close the component
+            //makes no sense to continue (read values) without coll, so close the component
             if(errorPort.isConnected())
                 errorPort.send(create("No MAPs available. Terminating process!"));
             mapPort.close();
@@ -71,14 +71,14 @@ public class SetValueInMap extends Component {
         }
         currentMap = (HashPMap<String, Object>) mp.getContent();
         drop(mp);
-        //if message content was no map, wait for next IP on MAP port
+        //if message content was no coll, wait for next IP on MAP port
         if(currentMap == null) {
             if(errorPort.isConnected())
                 errorPort.send(create("IP was not of type HashPMap. Waiting for next IP.!"));
             return;
         }
 
-        //we got a valid map, try to set values
+        //we got a valid coll, try to set values
         Packet vp;
         while ((vp = valuePort.receive()) != null) {
             if(vp.getType() == Packet.OPEN) {
@@ -87,7 +87,7 @@ public class SetValueInMap extends Component {
             } else if(vp.getType() == Packet.CLOSE) {
                 drop(vp);
                 currentMap = null;
-                //deactivate component and continue with a new map
+                //deactivate component and continue with a new coll
                 return;
             }
             Object v = vp.getContent();

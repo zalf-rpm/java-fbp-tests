@@ -1,0 +1,22 @@
+<?xml version="1.0"?> 
+ <drawfbp_file xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:noNamespaceSchemaLocation="https://github.com/jpaulm/drawfbp/blob/master/lib/drawfbp_file.xsd"><complang>Java</complang> <clicktogrid>true</clicktogrid> 
+<blocks><block> <x> 310 </x> <y> 439 </y> <id> 1 </id> <type>B</type> <width>92</width> <height>64</height> <description>read sim</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.CreateMapFromJsonFile</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 310 </x> <y> 271 </y> <id> 2 </id> <type>B</type> <width>92</width> <height>64</height> <description>string-\>map</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.CreateMapFromJsonString</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 574 </x> <y> 350 </y> <id> 3 </id> <type>B</type> <width>92</width> <height>64</height> <description>get value</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.GetValueFromMap</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 849 </x> <y> 350 </y> <id> 4 </id> <type>B</type> <width>92</width> <height>64</height> <description>to console</description> <blockclassname>C:/Users/berg.ZALF-AD/ownCloud/zalf/fbp/javafbp-4.1.0.jar!com.jpaulmorrison.fbp.core.components.misc.WriteToConsole</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 143 </x> <y> 443 </y> <id> 5 </id> <type>I</type> <width>69</width> <height>18</height> <description>sim.json</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 298 </x> <y> 121 </y> <id> 6 </id> <type>I</type> <width>313</width> <height>18</height> <description>["climate.csv-options", "start-date"]</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+</blocks> <connections>
+<connection> <fromx>620</fromx> <fromy>350</fromy> <tox>804</tox> <toy>350</toy> <fromid>3</fromid> <toid>4</toid> <id>1</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>356</fromx> <fromy>439</fromy> <tox>528</tox> <toy>364</toy> <fromid>1</fromid> <toid>3</toid> <id>2</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>356</fromx> <fromy>273</fromy> <tox>528</tox> <toy>336</toy> <fromid>2</fromid> <toid>3</toid> <id>3</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>PATH</downstreamport></connection> 
+<connection> <fromx>180</fromx> <fromy>444</fromy> <tox>264</tox> <toy>444</toy> <fromid>5</fromid> <toid>1</toid> <id>5</id> <endsatline>false</endsatline><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>312</fromx> <fromy>128</fromy> <tox>312</tox> <toy>239</toy> <fromid>6</fromid> <toid>2</toid> <id>6</id> <endsatline>false</endsatline><downstreamport>IN</downstreamport></connection> 
+</connections> </net> </drawfbp_file>

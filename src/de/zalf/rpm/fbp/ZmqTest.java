@@ -11,7 +11,20 @@ public class ZmqTest extends Network {
         //defineJsonToMapAndBackTest();
         //defineSetValuesInMapTest();
         //defineReplaceReferencesComponentTest();
-        defineCreateEnvSubnetTest();
+        //defineCreateEnvSubnetTest();
+        defineGetValueTest();
+    }
+
+    protected void defineGetValueTest(){
+        component("read_sim",de.zalf.rpm.fbp.CreateMapFromJsonFile.class);
+        component("string->coll",de.zalf.rpm.fbp.CreateMapFromJsonString.class);
+        component("get_value",de.zalf.rpm.fbp.GetValueFromMap.class);
+        component("to_console",com.jpaulmorrison.fbp.core.components.misc.WriteToConsole.class);
+        connect(component("get_value"), port("OUT"), component("to_console"), port("IN"));
+        connect(component("read_sim"), port("OUT"), component("get_value"), port("IN"));
+        connect(component("string->coll"), port("OUT"), component("get_value"), port("PATH"));
+        initialize("sim.json", component("read_sim"), port("IN"));
+        initialize("[\"climate.csv-options\", \"start-date\"]", component("string->coll"), port("IN"));
     }
 
     protected void defineCreateEnvSubnetTest(){
@@ -91,7 +104,7 @@ public class ZmqTest extends Network {
         connect(component("pass_and_trigger_2"), port("TRIGGER"), component("repeat_2"), port("REPEAT"));
         initialize("climate.csv-options, header-to-acd-names, globrad, 0", component("set_values_2"), port("PATH"));
         connect(component("pass_and_trigger_2"), port("OUT"), component("set_values_2"), port("MAP"));
-        initialize("sim.json", component("read_file"), port("SOURCE"));
+        initialize("sim-simple.json", component("read_file"), port("SOURCE"));
         connect(component("read_file"), port("OUT"), component("concat_strings"), port("IN"));
         initialize("climate.csv-options, start-date", component("set_values"), port("PATH"));
         initialize("hello my very dear world ", component("decompose_into_words"), port("IN"));
