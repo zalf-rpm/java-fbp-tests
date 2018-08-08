@@ -1,0 +1,49 @@
+<?xml version="1.0"?> 
+ <drawfbp_file xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:noNamespaceSchemaLocation="https://github.com/jpaulm/drawfbp/blob/master/lib/drawfbp_file.xsd"><complang>Java</complang> <clicktogrid>true</clicktogrid> 
+<blocks><block> <x> 558 </x> <y> 207 </y> <id> 2 </id> <type>B</type> <width>92</width> <height>64</height> <description>Read
+json</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 558 </x> <y> 343 </y> <id> 3 </id> <type>B</type> <width>92</width> <height>64</height> <description>Read
+json</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 558 </x> <y> 486 </y> <id> 4 </id> <type>B</type> <width>92</width> <height>64</height> <description>Read
+json</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 1335 </x> <y> 343 </y> <id> 5 </id> <type>B</type> <width>92</width> <height>64</height> <description>Env JSON
+string</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 792 </x> <y> 199 </y> <id> 6 </id> <type>B</type> <width>92</width> <height>64</height> <description>replace
+references</description> <diagramfilename>C:/Users/berg.ZALF-AD/GitHub/monica/fbp/replace-references.drw</diagramfilename> <multiplex>false</multiplex><invisible>false</invisible><issubnet>true</issubnet> 
+</block> 
+<block> <x> 792 </x> <y> 343 </y> <id> 7 </id> <type>B</type> <width>92</width> <height>64</height> <description>replace
+references</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 792 </x> <y> 486 </y> <id> 8 </id> <type>B</type> <width>92</width> <height>64</height> <description>replace
+references</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 1049 </x> <y> 351 </y> <id> 9 </id> <type>B</type> <width>92</width> <height>64</height> <description>create Env</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 369 </x> <y> 209 </y> <id> 11 </id> <type>I</type> <width>69</width> <height>18</height> <description>sim.json</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 361 </x> <y> 344 </y> <id> 12 </id> <type>I</type> <width>78</width> <height>18</height> <description>site.json</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 367 </x> <y> 482 </y> <id> 13 </id> <type>I</type> <width>78</width> <height>18</height> <description>crop.json</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+</blocks> <connections>
+<connection> <fromx>604</fromx> <fromy>199</fromy> <tox>745</tox> <toy>199</toy> <fromid>2</fromid> <toid>6</toid> <id>2</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>604</fromx> <fromy>344</fromy> <tox>745</tox> <toy>344</toy> <fromid>3</fromid> <toid>7</toid> <id>3</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>604</fromx> <fromy>486</fromy> <tox>745</tox> <toy>486</toy> <fromid>4</fromid> <toid>8</toid> <id>4</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>838</fromx> <fromy>196</fromy> <tox>1005</tox> <toy>345</toy> <fromid>6</fromid> <toid>9</toid> <id>5</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport><bends> <bend> <x>877</x> <y> 196</y> </bend>
+ <bend> <x>877</x> <y> 348</y> </bend>
+ <bend> <x>892</x> <y> 348</y> </bend>
+ </bends> </connection> 
+<connection> <fromx>838</fromx> <fromy>345</fromy> <tox>877</tox> <toy>345</toy> <fromid>7</fromid> <toid>5</toid> <id>6</id> <endsatline>true</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>838</fromx> <fromy>488</fromy> <tox>881</tox> <toy>348</toy> <fromid>8</fromid> <toid>6</toid> <id>7</id> <endsatline>true</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport><bends> <bend> <x>881</x> <y> 488</y> </bend>
+ <bend> <x>881</x> <y> 392</y> </bend>
+ </bends> </connection> 
+<connection> <fromx>1095</fromx> <fromy>350</fromy> <tox>1289</tox> <toy>350</toy> <fromid>9</fromid> <toid>5</toid> <id>8</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>403</fromx> <fromy>207</fromy> <tox>515</tox> <toy>207</toy> <fromid>11</fromid> <toid>2</toid> <id>9</id> <endsatline>false</endsatline><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>400</fromx> <fromy>346</fromy> <tox>511</tox> <toy>346</toy> <fromid>12</fromid> <toid>3</toid> <id>10</id> <endsatline>false</endsatline><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>406</fromx> <fromy>482</fromy> <tox>511</tox> <toy>482</toy> <fromid>13</fromid> <toid>4</toid> <id>11</id> <endsatline>false</endsatline><downstreamport>IN</downstreamport></connection> 
+</connections> </net> </drawfbp_file>

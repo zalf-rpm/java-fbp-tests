@@ -1,0 +1,26 @@
+<?xml version="1.0"?> 
+ <drawfbp_file xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:noNamespaceSchemaLocation="https://github.com/jpaulm/drawfbp/blob/master/lib/drawfbp_file.xsd"><complang>Java</complang> <clicktogrid>true</clicktogrid> 
+<blocks><block> <x> 816 </x> <y> 133 </y> <id> 2 </id> <type>B</type> <width>92</width> <height>64</height> <description>replace ref
+functions</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.ReplaceReferences</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 188 </x> <y> 133 </y> <id> 3 </id> <type>B</type> <width>92</width> <height>64</height> <description>read file</description> <blockclassname>C:/Users/berg.ZALF-AD/ownCloud/zalf/fbp/javafbp-4.1.0.jar!com.jpaulmorrison.fbp.core.components.io.ReadFile</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 393 </x> <y> 133 </y> <id> 4 </id> <type>B</type> <width>92</width> <height>64</height> <description>concat file</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.ConcatString</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 598 </x> <y> 133 </y> <id> 5 </id> <type>B</type> <width>92</width> <height>64</height> <description>json -\> map</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.CreateMapFromJsonString</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 53 </x> <y> 130 </y> <id> 6 </id> <type>I</type> <width>78</width> <height>18</height> <description>crop.json</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 1010 </x> <y> 134 </y> <id> 9 </id> <type>B</type> <width>92</width> <height>64</height> <description>map -\> json</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.CreateJsonStringFromMap</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 1197 </x> <y> 134 </y> <id> 10 </id> <type>B</type> <width>92</width> <height>64</height> <description>to console</description> <blockclassname>C:/Users/berg.ZALF-AD/ownCloud/zalf/fbp/javafbp-4.1.0.jar!com.jpaulmorrison.fbp.core.components.misc.WriteToConsole</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+</blocks> <connections>
+<connection> <fromx>234</fromx> <fromy>132</fromy> <tox>348</tox> <toy>132</toy> <fromid>3</fromid> <toid>4</toid> <id>1</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>439</fromx> <fromy>134</fromy> <tox>552</tox> <toy>134</toy> <fromid>4</fromid> <toid>5</toid> <id>2</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>92</fromx> <fromy>130</fromy> <tox>140</tox> <toy>130</toy> <fromid>6</fromid> <toid>3</toid> <id>4</id> <endsatline>false</endsatline><downstreamport>SOURCE</downstreamport></connection> 
+<connection> <fromx>644</fromx> <fromy>136</fromy> <tox>772</tox> <toy>134</toy> <fromid>5</fromid> <toid>2</toid> <id>5</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>862</fromx> <fromy>134</fromy> <tox>964</tox> <toy>135</toy> <fromid>2</fromid> <toid>9</toid> <id>6</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>1056</fromx> <fromy>135</fromy> <tox>1152</tox> <toy>135</toy> <fromid>9</fromid> <toid>10</toid> <id>7</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+</connections> </net> </drawfbp_file>

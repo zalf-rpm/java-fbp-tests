@@ -6,14 +6,14 @@ import java.util.Collection;
 import java.util.Map;
 import org.pcollections.*;
 
-
+@ComponentDescription("Set a value in a MAP under the given path (which may contain indices for lists).")
 @InPorts({
         @InPort(value = "VALUE", description = "Value to set"),
         @InPort(value = "PATH", description = "Path (a string) to value in possibly nested maps", type = String.class),
-        @InPort(value = "MAP", description = "Map representing JSON Object", type = HashPMap.class),
+        @InPort(value = "MAP", description = "Map representing JSON Object", type = PMap.class),
 })
 @OutPorts({
-        @OutPort(value = "OUT", description = "Map representation of JSON object", type = HashPMap.class),
+        @OutPort(value = "OUT", description = "Map representation of JSON object", type = PMap.class),
         @OutPort(value = "ERROR", description = "Error message", type = String.class, optional = true)
 })
 public class SetValueInMap extends Component {
@@ -21,7 +21,6 @@ public class SetValueInMap extends Component {
     InputPort pathPort;
     InputPort mapPort;
     OutputPort outPort;
-    OutputPort donePort;
     OutputPort errorPort;
 
     class SorI {
@@ -31,7 +30,7 @@ public class SetValueInMap extends Component {
         int index = -1;
         boolean isIndex() { return index >= 0; }
         boolean isStringKey() { return !isIndex(); }
-        public String toString(){ return index < 0 ? "" + index : key; }
+        public String toString() { return index < 0 ? "" + index : key; }
     }
 
     String pathsIIP;
@@ -46,7 +45,7 @@ public class SetValueInMap extends Component {
             if (p == null)
                 return;
             pathsIIP = (String)p.getContent();
-            path = TreePVector.empty();
+            path = Empty.vector();
             for(String s : pathsIIP.split(",")) {
                 String st = s.trim();
                 try {

@@ -1,0 +1,8 @@
+<?xml version="1.0"?> 
+ <drawfbp_file xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:noNamespaceSchemaLocation="https://github.com/jpaulm/drawfbp/blob/master/lib/drawfbp_file.xsd"><complang>Java</complang> <clicktogrid>true</clicktogrid> 
+<blocks><block> <x> 368 </x> <y> 368 </y> <id> 1 </id> <type>B</type> <width>92</width> <height>64</height> <description>replace 
+references</description> <diagramfilename>C:/Users/berg.ZALF-AD/GitHub/monica/fbp/replace-references.drw</diagramfilename> <multiplex>false</multiplex><invisible>false</invisible><issubnet>true</issubnet> 
+</block> 
+</blocks> <connections>
+</connections> </net> </drawfbp_file>

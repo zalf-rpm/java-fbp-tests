@@ -1,0 +1,29 @@
+<?xml version="1.0"?> 
+ <drawfbp_file xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:noNamespaceSchemaLocation="https://github.com/jpaulm/drawfbp/blob/master/lib/drawfbp_file.xsd"><complang>Java</complang> <clicktogrid>true</clicktogrid> 
+<blocks><block> <x> 432 </x> <y> 258 </y> <id> 2 </id> <type>B</type> <width>92</width> <height>64</height> <description>read JSON
+template</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>true</issubnet> 
+</block> 
+<block> <x> 258 </x> <y> 400 </y> <id> 4 </id> <type>B</type> <width>92</width> <height>64</height> <description>create list of 
+soil profiles</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 754 </x> <y> 400 </y> <id> 5 </id> <type>B</type> <width>92</width> <height>64</height> <description>fill soil profile
+in template</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 1131 </x> <y> 399 </y> <id> 9 </id> <type>B</type> <width>92</width> <height>64</height> <description>send message</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 1014 </x> <y> 287 </y> <id> 10 </id> <type>I</type> <width>94</width> <height>18</height> <description>zmq address</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 200 </x> <y> 254 </y> <id> 11 </id> <type>I</type> <width>136</width> <height>18</height> <description>path to template</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+</blocks> <connections>
+<connection> <fromx>304</fromx> <fromy>408</fromy> <tox>706</tox> <toy>408</toy> <fromid>4</fromid> <toid>5</toid> <id>1</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>soil-profile</downstreamport></connection> 
+<connection> <fromx>478</fromx> <fromy>257</fromy> <tox>710</tox> <toy>376</toy> <fromid>2</fromid> <toid>5</toid> <id>2</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>template</downstreamport><bends> <bend> <x>620</x> <y> 262</y> </bend>
+ <bend> <x>620</x> <y> 376</y> </bend>
+ </bends> </connection> 
+<connection> <fromx>800</fromx> <fromy>412</fromy> <tox>1084</tox> <toy>412</toy> <fromid>5</fromid> <toid>9</toid> <id>3</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>message</downstreamport></connection> 
+<connection> <fromx>1024</fromx> <fromy>296</fromy> <tox>1084</tox> <toy>380</toy> <fromid>10</fromid> <toid>9</toid> <id>4</id> <endsatline>false</endsatline><downstreamport>IN</downstreamport><bends> <bend> <x>1024</x> <y> 376</y> </bend>
+ <bend> <x>1024</x> <y> 380</y> </bend>
+ </bends> </connection> 
+<connection> <fromx>268</fromx> <fromy>253</fromy> <tox>384</tox> <toy>253</toy> <fromid>11</fromid> <toid>2</toid> <id>5</id> <endsatline>false</endsatline><downstreamport>IN</downstreamport></connection> 
+</connections> </net> </drawfbp_file>

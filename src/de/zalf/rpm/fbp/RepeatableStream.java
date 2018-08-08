@@ -16,11 +16,7 @@ public class RepeatableStream extends Component {
     InputPort repeatPort;
     OutputPort outPort;
 
-    List<Object> receivedIPs;
-
-    public RepeatableStream() {
-        receivedIPs = new LinkedList<>();
-    }
+    List<Object> receivedIPs = new LinkedList<>();
 
     @Override
     protected void execute() {

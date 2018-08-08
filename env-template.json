@@ -1,0 +1,22 @@
+{
+	"type": "Env",
+	"debugMode": "sim/debug?",
+	"params": {
+		"type": "CentralParameterProvider",
+		"userCropParameters": "crop/CropParameters",
+		"userEnvironmentParameters": "site/EnvironmentParameters",
+		"userSoilMoistureParameters": "site/SoilMoistureParameters",
+		"userSoilTemperatureParameters": "site/SoilTemperatureParameters",
+		"userSoilTransportParameters": "site/SoilTransportParameters",
+		"userSoilOrganicParameters": "site/SoilOrganicParameters",
+		"simulationParameters": "sim",
+		"siteParameters": "site/SiteParameters"
+	},
+	"cropRotation": "crop/cropRotation",
+	"cropRotations": "crop/cropRotations",
+	"events": "sim/output/events",
+	"outputs": "sim/output",
+
+	"pathToClimateCSV": "sim/climate.csv",
+	"csvViaHeaderOptions": "sim/climate.csv-options"
+}

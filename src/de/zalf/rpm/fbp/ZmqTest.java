@@ -6,10 +6,71 @@ public class ZmqTest extends Network {
     String description = " ";
 
     protected void define() {
-       //defineZmqTest();
-       //defineCountTest();
-       //defineJsonToMapAndBackTest();
-       defineSetValuesInMapTest();
+        //defineZmqTest();
+        //defineCountTest();
+        //defineJsonToMapAndBackTest();
+        //defineSetValuesInMapTest();
+        //defineReplaceReferencesComponentTest();
+        defineCreateEnvSubnetTest();
+    }
+
+    protected void defineCreateEnvSubnetTest(){
+        component("map_->_json",de.zalf.rpm.fbp.CreateJsonStringFromMap.class);
+        component("to_console",com.jpaulmorrison.fbp.core.components.misc.WriteToConsole.class);
+        component("sim_->_map",de.zalf.rpm.fbp.CreateMapFromJsonFile.class);
+        component("crop_->_map",de.zalf.rpm.fbp.CreateMapFromJsonFile.class);
+        component("site_->_map",de.zalf.rpm.fbp.CreateMapFromJsonFile.class);
+        component("replace_sim_refs",de.zalf.rpm.fbp.ReplaceReferences.class);
+        component("replace__crop_refs",de.zalf.rpm.fbp.ReplaceReferences.class);
+        component("replace__site_refs",de.zalf.rpm.fbp.ReplaceReferences.class);
+        component("template__->_map",de.zalf.rpm.fbp.CreateMapFromJsonFile.class);
+        component("set__debugMode",de.zalf.rpm.fbp.SetValueInMap.class);
+        component("get_debug?",de.zalf.rpm.fbp.GetValueFromMap.class);
+        component("set_simParams",de.zalf.rpm.fbp.SetValueInMap.class);
+        component("get_events",de.zalf.rpm.fbp.GetValueFromMap.class);
+        component("get_cropRotation",de.zalf.rpm.fbp.GetValueFromMap.class);
+        component("set_cropRotation",de.zalf.rpm.fbp.SetValueInMap.class);
+        component("drop_site",de.zalf.rpm.fbp.Sink.class);
+        initialize("sim.json", component("sim_->_map"), port("IN"));
+        initialize("crop.json", component("crop_->_map"), port("IN"));
+        initialize("site.json", component("site_->_map"), port("IN"));
+        connect(component("map_->_json"), port("OUT"), component("to_console"), port("IN"));
+        connect(component("sim_->_map"), port("OUT"), component("replace_sim_refs"), port("IN"));
+        connect(component("crop_->_map"), port("OUT"), component("replace__crop_refs"), port("IN"));
+        connect(component("site_->_map"), port("OUT"), component("replace__site_refs"), port("IN"));
+        initialize("env-template.json", component("template__->_map"), port("IN"));
+        connect(component("template__->_map"), port("OUT"), component("set__debugMode"), port("MAP"));
+        initialize("debugMode", component("set__debugMode"), port("PATH"));
+        connect(component("replace_sim_refs"), port("OUT"), component("get_debug?"), port("IN"));
+        initialize("debug?", component("get_debug?"), port("PATH"));
+        connect(component("get_debug?"), port("VALUE"), component("set__debugMode"), port("VALUE"));
+        initialize("params, simulationParameters", component("set_simParams"), port("PATH"));
+        connect(component("set__debugMode"), port("OUT"), component("set_simParams"), port("MAP"));
+        initialize("output, events", component("get_events"), port("PATH"));
+        connect(component("get_debug?"), port("PASS"), component("get_events"), port("IN"));
+        connect(component("get_events"), port("VALUE"), component("set_simParams"), port("VALUE"));
+        connect(component("replace__crop_refs"), port("OUT"), component("get_cropRotation"), port("IN"));
+        connect(component("set_simParams"), port("OUT"), component("set_cropRotation"), port("MAP"));
+        connect(component("get_cropRotation"), port("VALUE"), component("set_cropRotation"), port("VALUE"));
+        initialize("cropRotation", component("set_cropRotation"), port("PATH"));
+        initialize("cropRotation", component("get_cropRotation"), port("PATH"));
+        connect(component("set_cropRotation"), port("OUT"), component("map_->_json"), port("IN"));
+        connect(component("replace__site_refs"), port("OUT"), component("drop_site"), port("IN"));
+    }
+
+    protected void defineReplaceReferencesComponentTest() {
+        component("replace_ref_functions",de.zalf.rpm.fbp.ReplaceReferences.class);
+        component("read_file",com.jpaulmorrison.fbp.core.components.io.ReadFile.class);
+        component("concat_file",de.zalf.rpm.fbp.ConcatString.class);
+        component("json_->_map",de.zalf.rpm.fbp.CreateMapFromJsonString.class);
+        component("map_->_json",de.zalf.rpm.fbp.CreateJsonStringFromMap.class);
+        component("to_console",com.jpaulmorrison.fbp.core.components.misc.WriteToConsole.class);
+        connect(component("read_file"), port("OUT"), component("concat_file"), port("IN"));
+        connect(component("concat_file"), port("OUT"), component("json_->_map"), port("IN"));
+        initialize("crop.json", component("read_file"), port("SOURCE"));
+        connect(component("json_->_map"), port("OUT"), component("replace_ref_functions"), port("IN"));
+        connect(component("replace_ref_functions"), port("OUT"), component("map_->_json"), port("IN"));
+        connect(component("map_->_json"), port("OUT"), component("to_console"), port("IN"));
     }
 
     protected void defineSetValuesInMapTest() {

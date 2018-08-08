@@ -6,7 +6,8 @@ import com.jpaulmorrison.fbp.core.engine.*;
 @InPort(value = "IN", description = "IPs to pass through")
 @OutPorts({
         @OutPort(value = "OUT", description = "Pass through from IN"),
-        @OutPort(value = "TRIGGER", description = "Trigger IP for every IP passed through", type = String.class, optional = true)
+        @OutPort(value = "TRIGGER", description = "Trigger IP for every IP passed through",
+                type = String.class, optional = true)
 })
 public class PassThroughWithTrigger extends Component {
     InputPort inPort;

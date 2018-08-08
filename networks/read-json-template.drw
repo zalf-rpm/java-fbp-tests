@@ -1,0 +1,16 @@
+<?xml version="1.0"?> 
+ <drawfbp_file xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:noNamespaceSchemaLocation="https://github.com/jpaulm/drawfbp/blob/master/lib/drawfbp_file.xsd"><net> <desc>read-json-template.drw</desc> <complang>Java</complang> <clicktogrid>true</clicktogrid> 
+<blocks><block> <x> 251 </x> <y> 589 </y> <id> 1 </id> <type>C</type> <width>36</width> <height>28</height> <description>path-to-template</description> <substreamsensitive>false</substreamsensitive><multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 1055 </x> <y> 588 </y> <id> 2 </id> <type>D</type> <width>36</width> <height>28</height> <description>json-template</description> <substreamsensitive>false</substreamsensitive><multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 491 </x> <y> 578 </y> <id> 5 </id> <type>B</type> <width>92</width> <height>64</height> <description>read file</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 750 </x> <y> 578 </y> <id> 6 </id> <type>B</type> <width>92</width> <height>64</height> <description>parse json</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+</blocks> <connections>
+<connection> <fromx>269</fromx> <fromy>589</fromy> <tox>444</tox> <toy>589</toy> <fromid>1</fromid> <toid>5</toid> <id>2</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>537</fromx> <fromy>588</fromy> <tox>705</tox> <toy>591</toy> <fromid>5</fromid> <toid>6</toid> <id>3</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>796</fromx> <fromy>587</fromy> <tox>1036</tox> <toy>584</toy> <fromid>6</fromid> <toid>2</toid> <id>4</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+</connections> </net> </drawfbp_file>

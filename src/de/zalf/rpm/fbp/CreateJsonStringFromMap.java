@@ -6,18 +6,19 @@ import com.jpaulmorrison.fbp.core.engine.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.Map;
-import org.pcollections.HashPMap;
+import org.pcollections.PMap;
 
-@InPort(value = "IN", description = "Map representation of JSON object", type = HashPMap.class)
+@InPort(value = "IN", description = "Map representation of JSON object", type = PMap.class)
 @OutPort(value = "OUT", description = "String of JSON object", type = String.class)
 public class CreateJsonStringFromMap extends Component {
     InputPort inPort;
     OutputPort outPort;
 
+    ObjectMapper om = new ObjectMapper();
+
     @Override
     protected void execute() {
-        //ObjectMapper om = JsonFactory.create(); //Boon
-        ObjectMapper om = new ObjectMapper();
+
 
         Packet p = inPort.receive();
         while (p != null) {

@@ -1,0 +1,40 @@
+<?xml version="1.0"?> 
+ <drawfbp_file xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:noNamespaceSchemaLocation="https://github.com/jpaulm/drawfbp/blob/master/lib/drawfbp_file.xsd"><complang>Java</complang> <clicktogrid>true</clicktogrid> 
+<blocks><block> <x> 117 </x> <y> 139 </y> <id> 2 </id> <type>B</type> <width>92</width> <height>64</height> <description>Read
+sim.json</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 117 </x> <y> 275 </y> <id> 3 </id> <type>B</type> <width>92</width> <height>64</height> <description>Read
+site.json</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 117 </x> <y> 418 </y> <id> 4 </id> <type>B</type> <width>92</width> <height>64</height> <description>Read
+crop.json</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 894 </x> <y> 275 </y> <id> 5 </id> <type>B</type> <width>92</width> <height>64</height> <description>Env JSON
+string</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 351 </x> <y> 131 </y> <id> 6 </id> <type>B</type> <width>92</width> <height>64</height> <description>replace
+references</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>true</issubnet> 
+</block> 
+<block> <x> 351 </x> <y> 275 </y> <id> 7 </id> <type>B</type> <width>92</width> <height>64</height> <description>replace
+references</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 351 </x> <y> 418 </y> <id> 8 </id> <type>B</type> <width>92</width> <height>64</height> <description>replace
+references</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 608 </x> <y> 283 </y> <id> 9 </id> <type>B</type> <width>92</width> <height>64</height> <description>create Env</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+</blocks> <connections>
+<connection> <fromx>163</fromx> <fromy>131</fromy> <tox>304</tox> <toy>131</toy> <fromid>2</fromid> <toid>6</toid> <id>2</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>163</fromx> <fromy>276</fromy> <tox>304</tox> <toy>276</toy> <fromid>3</fromid> <toid>7</toid> <id>3</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>163</fromx> <fromy>418</fromy> <tox>304</tox> <toy>418</toy> <fromid>4</fromid> <toid>8</toid> <id>4</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>397</fromx> <fromy>128</fromy> <tox>564</tox> <toy>277</toy> <fromid>6</fromid> <toid>9</toid> <id>5</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport><bends> <bend> <x>436</x> <y> 128</y> </bend>
+ <bend> <x>436</x> <y> 280</y> </bend>
+ <bend> <x>451</x> <y> 280</y> </bend>
+ </bends> </connection> 
+<connection> <fromx>397</fromx> <fromy>277</fromy> <tox>436</tox> <toy>277</toy> <fromid>7</fromid> <toid>5</toid> <id>6</id> <endsatline>true</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>397</fromx> <fromy>420</fromy> <tox>440</tox> <toy>280</toy> <fromid>8</fromid> <toid>6</toid> <id>7</id> <endsatline>true</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport><bends> <bend> <x>440</x> <y> 420</y> </bend>
+ <bend> <x>440</x> <y> 324</y> </bend>
+ </bends> </connection> 
+<connection> <fromx>654</fromx> <fromy>282</fromy> <tox>848</tox> <toy>282</toy> <fromid>9</fromid> <toid>5</toid> <id>8</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+</connections> </net> </drawfbp_file>

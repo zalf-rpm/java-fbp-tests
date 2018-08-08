@@ -1,0 +1,69 @@
+<?xml version="1.0"?> 
+ <drawfbp_file xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:noNamespaceSchemaLocation="https://github.com/jpaulm/drawfbp/blob/master/lib/drawfbp_file.xsd"><net> <desc> </desc> <complang>Java</complang> <clicktogrid>true</clicktogrid> 
+<blocks><block> <x> 251 </x> <y> 401 </y> <id> 32 </id> <type>B</type> <width>92</width> <height>64</height> <description>decompose
+into words</description> <blockclassname>C:/Users/berg.ZALF-AD/ownCloud/zalf/fbp/javafbp-4.1.0.jar!com.jpaulmorrison.fbp.core.components.text.DeCompose</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 490 </x> <y> 164 </y> <id> 34 </id> <type>B</type> <width>92</width> <height>64</height> <description>JSON string
+to Map</description> <blockclassname>C:\Users\berg.ZALF-AD\development\fbp\SimpleFBPFlow\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.CreateMapFromJsonString</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 1340 </x> <y> 364 </y> <id> 35 </id> <type>B</type> <width>92</width> <height>64</height> <description>write to 
+console</description> <blockclassname>C:/Users/berg.ZALF-AD/ownCloud/zalf/fbp/javafbp-4.1.0.jar!com.jpaulmorrison.fbp.core.components.misc.WriteToConsole</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 809 </x> <y> 363 </y> <id> 5 </id> <type>B</type> <width>92</width> <height>64</height> <description>set values</description> <blockclassname>C:\Users\berg.ZALF-AD\development\fbp\SimpleFBPFlow\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.SetValueInMap</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 500 </x> <y> 364 </y> <id> 39 </id> <type>B</type> <width>92</width> <height>64</height> <description>repeatable
+words</description> <blockclassname>C:\Users\berg.ZALF-AD\development\fbp\SimpleFBPFlow\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.RepeatableStream</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 1090 </x> <y> 358 </y> <id> 9 </id> <type>B</type> <width>92</width> <height>64</height> <description>Map to 
+JSON string</description> <blockclassname>C:\Users\berg.ZALF-AD\development\fbp\SimpleFBPFlow\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.CreateJsonStringFromMap</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 684 </x> <y> 164 </y> <id> 42 </id> <type>B</type> <width>92</width> <height>64</height> <description>Pass and
+trigger</description> <blockclassname>C:\Users\berg.ZALF-AD\development\fbp\SimpleFBPFlow\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.PassThroughWithTrigger</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 129 </x> <y> 42 </y> <id> 11 </id> <type>I</type> <width>69</width> <height>18</height> <description>sim.json</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 846 </x> <y> 685 </y> <id> 46 </id> <type>B</type> <width>92</width> <height>64</height> <description>set values 2</description> <blockclassname>C:\Users\berg.ZALF-AD\development\fbp\SimpleFBPFlow\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.SetValueInMap</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 298 </x> <y> 685 </y> <id> 47 </id> <type>B</type> <width>92</width> <height>64</height> <description>decompose
+into words 2</description> <blockclassname>C:/Users/berg.ZALF-AD/ownCloud/zalf/fbp/javafbp-4.1.0.jar!com.jpaulmorrison.fbp.core.components.text.DeCompose</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 578 </x> <y> 686 </y> <id> 48 </id> <type>B</type> <width>92</width> <height>64</height> <description>repeat</description> <blockclassname>C:\Users\berg.ZALF-AD\development\fbp\SimpleFBPFlow\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.RepeatableStream</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 49 </x> <y> 680 </y> <id> 49 </id> <type>I</type> <width>187</width> <height>18</height> <description>what the heck is this </description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 710 </x> <y> 514 </y> <id> 51 </id> <type>B</type> <width>92</width> <height>64</height> <description>pass and
+trigger</description> <blockclassname>C:\Users\berg.ZALF-AD\development\fbp\SimpleFBPFlow\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.PassThroughWithTrigger</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 148 </x> <y> 164 </y> <id> 20 </id> <type>B</type> <width>92</width> <height>64</height> <description>read file</description> <blockclassname>C:/Users/berg.ZALF-AD/ownCloud/zalf/fbp/javafbp-4.1.0.jar!com.jpaulmorrison.fbp.core.components.io.ReadFile</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 847 </x> <y> 548 </y> <id> 52 </id> <type>I</type> <width>78</width> <height>18</height> <description>site.json</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 303 </x> <y> 164 </y> <id> 26 </id> <type>B</type> <width>92</width> <height>64</height> <description>concat strings</description> <blockclassname>C:\Users\berg.ZALF-AD\development\fbp\SimpleFBPFlow\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.ConcatString</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 858 </x> <y> 173 </y> <id> 27 </id> <type>I</type> <width>78</width> <height>18</height> <description>crop.json</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 163 </x> <y> 305 </y> <id> 30 </id> <type>I</type> <width>204</width> <height>18</height> <description>hello my very dear world</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+</blocks> <connections>
+<connection> <fromx>892</fromx> <fromy>679</fromy> <tox>1044</tox> <toy>388</toy> <fromid>46</fromid> <toid>9</toid> <id>32</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>664</fromx> <fromy>546</fromy> <tox>596</tox> <toy>656</toy> <fromid>51</fromid> <toid>48</toid> <id>33</id> <endsatline>false</endsatline><upstreamport>TRIGGER</upstreamport><downstreamport>REPEAT</downstreamport></connection> 
+<connection> <fromx>850</fromx> <fromy>557</fromy> <tox>850</tox> <toy>656</toy> <fromid>52</fromid> <toid>46</toid> <id>34</id> <endsatline>false</endsatline><downstreamport>PATH</downstreamport></connection> 
+<connection> <fromx>749</fromx> <fromy>546</fromy> <tox>800</tox> <toy>656</toy> <fromid>51</fromid> <toid>46</toid> <id>35</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>MAP</downstreamport></connection> 
+<connection> <fromx>162</fromx> <fromy>41</fromy> <tox>142</tox> <toy>131</toy> <fromid>11</fromid> <toid>20</toid> <id>5</id> <endsatline>false</endsatline><downstreamport>SOURCE</downstreamport></connection> 
+<connection> <fromx>194</fromx> <fromy>163</fromy> <tox>257</tox> <toy>166</toy> <fromid>20</fromid> <toid>26</toid> <id>6</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>897</fromx> <fromy>178</fromy> <tox>811</tox> <toy>331</toy> <fromid>27</fromid> <toid>5</toid> <id>8</id> <endsatline>false</endsatline><downstreamport>PATH</downstreamport></connection> 
+<connection> <fromx>210</fromx> <fromy>304</fromy> <tox>206</tox> <toy>394</toy> <fromid>30</fromid> <toid>32</toid> <id>12</id> <endsatline>false</endsatline><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>349</fromx> <fromy>168</fromy> <tox>443</tox> <toy>168</toy> <fromid>26</fromid> <toid>34</toid> <id>14</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>1136</fromx> <fromy>358</fromy> <tox>1295</tox> <toy>364</toy> <fromid>9</fromid> <toid>35</toid> <id>16</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>297</fromx> <fromy>387</fromy> <tox>454</tox> <toy>359</toy> <fromid>32</fromid> <toid>39</toid> <id>19</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>546</fromx> <fromy>352</fromy> <tox>763</tox> <toy>367</toy> <fromid>39</fromid> <toid>5</toid> <id>20</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>VALUE</downstreamport></connection> 
+<connection> <fromx>536</fromx> <fromy>164</fromy> <tox>636</tox> <toy>153</toy> <fromid>34</fromid> <toid>42</toid> <id>23</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>730</fromx> <fromy>161</fromy> <tox>774</tox> <toy>331</toy> <fromid>42</fromid> <toid>5</toid> <id>24</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>MAP</downstreamport><bends> <bend> <x>750</x> <y> 163</y> </bend>
+ </bends> </connection> 
+<connection> <fromx>660</fromx> <fromy>196</fromy> <tox>482</tox> <toy>331</toy> <fromid>42</fromid> <toid>39</toid> <id>26</id> <endsatline>false</endsatline><upstreamport>TRIGGER</upstreamport><downstreamport>REPEAT</downstreamport></connection> 
+<connection> <fromx>142</fromx> <fromy>679</fromy> <tox>253</tox> <toy>682</toy> <fromid>49</fromid> <toid>47</toid> <id>27</id> <endsatline>false</endsatline><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>344</fromx> <fromy>680</fromy> <tox>534</tox> <toy>684</toy> <fromid>47</fromid> <toid>48</toid> <id>28</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>624</fromx> <fromy>686</fromy> <tox>799</tox> <toy>680</toy> <fromid>48</fromid> <toid>46</toid> <id>29</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>VALUE</downstreamport></connection> 
+<connection> <fromx>782</fromx> <fromy>395</fromy> <tox>724</tox> <toy>484</toy> <fromid>5</fromid> <toid>51</toid> <id>31</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+</connections> </net> </drawfbp_file>

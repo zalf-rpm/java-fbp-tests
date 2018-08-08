@@ -1,0 +1,15 @@
+<?xml version="1.0"?> 
+ <drawfbp_file xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:noNamespaceSchemaLocation="https://github.com/jpaulm/drawfbp/blob/master/lib/drawfbp_file.xsd"><net> <desc>replace-references.drw</desc> <complang>Java</complang> <clicktogrid>true</clicktogrid> 
+<blocks><block> <x> 241 </x> <y> 385 </y> <id> 1 </id> <type>C</type> <width>36</width> <height>28</height> <description>IN</description> <substreamsensitive>false</substreamsensitive><multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 1307 </x> <y> 816 </y> <id> 2 </id> <type>D</type> <width>36</width> <height>28</height> <description>OUT</description> <substreamsensitive>false</substreamsensitive><multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 403 </x> <y> 148 </y> <id> 3 </id> <type>B</type> <width>92</width> <height>64</height> <description>deconstruct 
+JSON map</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 403 </x> <y> 661 </y> <id> 4 </id> <type>B</type> <width>92</width> <height>64</height> <description>split map</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+</blocks> <connections>
+<connection> <fromx>259</fromx> <fromy>387</fromy> <tox>356</tox> <toy>152</toy> <fromid>1</fromid> <toid>3</toid> <id>1</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+</connections> </net> </drawfbp_file>

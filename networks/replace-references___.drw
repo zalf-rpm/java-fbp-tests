@@ -1,0 +1,14 @@
+<?xml version="1.0"?> 
+ <drawfbp_file xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:noNamespaceSchemaLocation="https://github.com/jpaulm/drawfbp/blob/master/lib/drawfbp_file.xsd"><net> <desc>replace-references.drw</desc> <complang>Java</complang> <clicktogrid>true</clicktogrid> 
+<blocks><block> <x> 182 </x> <y> 402 </y> <id> 1 </id> <type>C</type> <width>36</width> <height>28</height> <description>IN/OUT</description> <substreamsensitive>false</substreamsensitive><multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 867 </x> <y> 396 </y> <id> 2 </id> <type>D</type> <width>36</width> <height>28</height> <description>OUT</description> <substreamsensitive>false</substreamsensitive><multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 438 </x> <y> 397 </y> <id> 6 </id> <type>B</type> <width>92</width> <height>64</height> <description>replace
+references</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+</blocks> <connections>
+<connection> <fromx>200</fromx> <fromy>403</fromy> <tox>392</tox> <toy>403</toy> <fromid>1</fromid> <toid>6</toid> <id>1</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>484</fromx> <fromy>400</fromy> <tox>848</tox> <toy>400</toy> <fromid>6</fromid> <toid>2</toid> <id>2</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+</connections> </net> </drawfbp_file>

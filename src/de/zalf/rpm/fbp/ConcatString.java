@@ -2,6 +2,7 @@ package de.zalf.rpm.fbp;
 
 import com.jpaulmorrison.fbp.core.engine.*;
 
+@ComponentDescription("Concatenate all the lines arriving at IN into a single string")
 @InPorts({
         @InPort(value = "IN", type = String.class),
         @InPort(value = "SEP", description = "separator between concatenated strings",
