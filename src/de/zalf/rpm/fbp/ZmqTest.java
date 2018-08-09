@@ -12,7 +12,30 @@ public class ZmqTest extends Network {
         //defineSetValuesInMapTest();
         //defineReplaceReferencesComponentTest();
         //defineCreateEnvSubnetTest();
-        defineGetValueTest();
+        //defineGetValueTest();
+        defineSetValueTest();
+    }
+
+    protected void defineSetValueTest(){
+        component("read_sim",de.zalf.rpm.fbp.JsonFileToPMapOrVec.class);
+        component("read_paths",de.zalf.rpm.fbp.JsonStringToPMapOrVec.class);
+        component("set_value",de.zalf.rpm.fbp.SetValueInPMapOrVec.class);
+        component("to_console",com.jpaulmorrison.fbp.core.components.misc.WriteToConsole.class);
+        component("read_values",de.zalf.rpm.fbp.JsonStringToPMapOrVec.class);
+        component("split_values",de.zalf.rpm.fbp.ListToIPs.class);
+        component("split_paths",de.zalf.rpm.fbp.ListToIPs.class);
+        component("coll->string",de.zalf.rpm.fbp.PMapOrVecToJsonString.class);
+        connect(component("read_sim"), port("OUT"), component("set_value"), port("COLL"));
+        initialize("sim-simple.json", component("read_sim"), port("IN"));
+        initialize("[[\"climate.csv-options\", \"start-date\"], [\"crop.json\"]]", component("read_paths"), port("IN"));
+        connect(component("read_paths"), port("OUT"), component("split_paths"), port("IN"));
+        connect(component("split_paths"), port("OUT"), component("set_value"), port("PATH"));
+        connect(component("split_values"), port("OUT"), component("set_value"), port("VALUE"));
+        connect(component("read_values"), port("OUT"), component("split_values"), port("IN"));
+        initialize("[\"what\", \"the\", \"heck\"]", component("read_values"), port("IN"));
+        initialize("0", component("split_values"), port("SSL"));
+        connect(component("set_value"), port("OUT"), component("coll->string"), port("IN"));
+        connect(component("coll->string"), port("OUT"), component("to_console"), port("IN"));
     }
 
     protected void defineGetValueTest(){

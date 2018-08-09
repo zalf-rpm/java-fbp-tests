@@ -11,7 +11,7 @@ import org.pcollections.*;
 @InPorts({
         @InPort(value = "VALUE", description = "Value to set"),
         @InPort(value = "PATH", description = "Path to value in possibly nested datastructures", type = List.class),
-        @InPort(value = "MAP", description = "PMap or PVector representing JSON datastructure"),
+        @InPort(value = "COLL", description = "PMap or PVector representing JSON datastructure"),
 })
 @OutPorts({
         @OutPort(value = "OUT", description = "PMap or PVector representation of JSON datastructure"),
@@ -20,142 +20,170 @@ import org.pcollections.*;
 public class SetValueInPMapOrVec extends Component {
     InputPort valuePort;
     InputPort pathPort;
-    InputPort dsPort;
+    InputPort collPort;
     OutputPort outPort;
     OutputPort errorPort;
 
-    class SorI {
-        SorI(String k){ key = k; }
-        SorI(int i){ index = i; }
-        String key;
-        int index = -1;
-        boolean isIndex() { return index >= 0; }
-        boolean isStringKey() { return !isIndex(); }
-        public String toString() { return index < 0 ? "" + index : key; }
+    PVector path;
+    int pathLevel = 0;
+
+    Object coll;
+    int collLevel = 0;
+    int sendCollOpenBrackets = 0;
+
+    Object value;
+    int valueLevel = 0;
+
+    private boolean tryReceivingPath(){
+        if(path == null || pathLevel >= collLevel) {
+            Packet pp;
+            while((pp = pathPort.receive()) != null) {
+                if(pp.getType() == Packet.OPEN){
+                    pathLevel++;
+                    //sendCollOpenBrackets++;
+                    drop(pp);
+                } else if(pp.getType() == Packet.CLOSE){
+                    pathLevel--;
+                    //if(sendCollOpenBrackets > 0) {
+                    //    outPort.send(create(Packet.CLOSE, ""));
+                    //    sendCollOpenBrackets--;
+                    //}
+                    drop(pp);
+                } else
+                    break;
+            }
+
+            if(pp != null) {
+                path = TreePVector.from((List) pp.getContent());
+                drop(pp);
+                return true;
+            }
+        }
+        return false;
     }
 
-    String pathsIIP;
-    PVector<SorI> path;
-    HashPMap<String, Object> currentMap;
+    private boolean tryReceivingColl(){
+        if(coll == null || (collLevel >= pathLevel && collLevel >= valueLevel)) {
+            Packet cp;
+            while((cp = collPort.receive()) != null) {
+                if (cp.getType() == Packet.OPEN) {
+                    collLevel++;
+                    drop(cp);
+                } else if (cp.getType() == Packet.CLOSE) {
+                    collLevel--;
+                    drop(cp);
+                } else
+                    break;
+            }
+
+            if(cp != null) {
+                coll = cp.getContent();
+                drop(cp);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean tryReceivingValue(){
+        if(value == null || (valueLevel >= pathLevel && valueLevel >= collLevel)) {
+            Packet vp;
+            while((vp = valuePort.receive()) != null) {
+                if (vp.getType() == Packet.OPEN) {
+                    valueLevel++;
+                    drop(vp);
+                } else if (vp.getType() == Packet.CLOSE) {
+                    valueLevel--;
+                    drop(vp);
+                } else
+                    break;
+            }
+
+            if(vp != null) {
+                value = vp.getContent();
+                drop(vp);
+                return true;
+            }
+        }
+        return false;
+    }
 
     @Override
     protected void execute() {
-        //read IIP for path
-        if (!pathPort.isClosed()) {
-            Packet p = pathPort.receive();
-            if (p == null)
-                return;
-            pathsIIP = (String)p.getContent();
-            path = Empty.vector();
-            for(String s : pathsIIP.split(",")) {
-                String st = s.trim();
-                try {
-                    int i = Integer.parseInt(st);
-                    path = path.plus(new SorI(i));
-                } catch (NumberFormatException nfe){
-                    path = path.plus(new SorI(st));
-                }
-            }
-            drop(p);
-            pathPort.close();
-        }
+        boolean someDataReceived = tryReceivingPath() || tryReceivingColl() || tryReceivingValue();
 
-        //try to read a origIn packet
-        Packet mp = dsPort.receive();
-        if (mp == null) {
-            //makes no sense to continue (read values) without origIn, so close the component
-            if(errorPort.isConnected())
-                errorPort.send(create("No MAPs available. Terminating process!"));
-            dsPort.close();
-            valuePort.close();
+        if(!someDataReceived || path == null || coll == null || value == null)
             return;
-        }
-        currentMap = (HashPMap<String, Object>) mp.getContent();
-        drop(mp);
-        //if message content was no origIn, wait for next IP on MAP port
-        if(currentMap == null) {
-            if(errorPort.isConnected())
-                errorPort.send(create("IP was not of type HashPMap. Waiting for next IP.!"));
-            return;
-        }
 
-        //we got a valid origIn, try to set values
-        Packet vp;
-        while ((vp = valuePort.receive()) != null) {
-            if(vp.getType() == Packet.OPEN) {
-                drop(vp);
-                continue;
-            } else if(vp.getType() == Packet.CLOSE) {
-                drop(vp);
-                currentMap = null;
-                //deactivate component and continue with a new origIn
-                return;
-            }
-            Object v = vp.getContent();
-            HashPMap<String, Object> m = updateIn(currentMap, path, v, Empty.vector());
-            drop(vp);
-            Packet out = create(m);
-            outPort.send(out);
-        }
+        Object o;
+        if(PMap.class.isAssignableFrom(coll.getClass()))
+            o = updateIn((PMap<String, Object>)coll, path, value, Empty.vector());
+        else if(PVector.class.isAssignableFrom(coll.getClass()))
+            o = updateIn((PVector)coll, path, value, Empty.vector());
+        else
+            return;
+
+        outPort.send(create(o));
     }
 
     //update in function for maps
-    private HashPMap<String, Object> updateIn(HashPMap<String, Object> m, PVector<SorI> path, Object value,
-                                              PVector<SorI> prevPath)
+    private PMap<String, Object> updateIn(PMap<String, Object> m, PVector<Object> path, Object value, PVector<Object> prevPath)
     {
         if(!path.isEmpty()) {
-            SorI p0 = path.get(0);
-            if(p0.isIndex()){
+            Object p0 = path.get(0);
+            if(p0 instanceof Integer){
                 if(errorPort.isConnected())
                     errorPort.send(create("Path [" + prevPath.plus(p0) + "] doesn't designate a VECTOR/LIST. Waiting for next IP.!"));
                 return m;
+            } else if(p0 instanceof String) {
+                String key = (String)p0;
+                PVector<Object> restPath = path.minus(0);
+                if (m.containsKey(key)) {
+                    if (restPath.isEmpty())
+                        return m.plus(key, value);
+                    else {
+                        Object o = m.get(key);
+                        if (Map.class.isAssignableFrom(o.getClass())) {
+                            return m.plus(key, updateIn(HashTreePMap.from((Map<String, Object>)o), restPath, value, prevPath.plus(p0)));
+                        } else if (Collection.class.isAssignableFrom(o.getClass())) {
+                            return m.plus(key, updateIn(TreePVector.from((Collection<Object>)o), restPath, value, prevPath.plus(p0)));
+                        } else if (errorPort.isConnected())
+                            errorPort.send(create("Path [" + prevPath.plus(p0) + "] doesn't designate a MAP or VECTOR/LIST. Waiting for next IP.!"));
+                    }
+                } else if (errorPort.isConnected())
+                    errorPort.send(create("Path [" + prevPath.plus(p0) + "] doesn't designate a value. Waiting for next IP.!"));
             }
-            String key = p0.key;
-            PVector<SorI> restPath = path.minus(0);
-            if (m.containsKey(key)) {
-                if (restPath.isEmpty())
-                    return m.plus(key, value);
-                else {
-                    Object o = m.get(key);
-                    if(Map.class.isAssignableFrom(o.getClass())){
-                        return m.plus(key, updateIn(HashTreePMap.from((Map)o), restPath, value, prevPath.plus(p0)));
-                    } else if(Collection.class.isAssignableFrom(o.getClass())) {
-                        return m.plus(key, updateIn(TreePVector.from((Collection)o), restPath, value, prevPath.plus(p0)));
-                    } else if(errorPort.isConnected())
-                        errorPort.send(create("Path [" + prevPath.plus(p0) + "] doesn't designate a MAP or VECTOR/LIST. Waiting for next IP.!"));
-                }
-            } else if(errorPort.isConnected())
-                errorPort.send(create("Path [" + prevPath.plus(p0) + "] doesn't designate a value. Waiting for next IP.!"));
         }
         return m;
     }
 
     //update in function for linear collections
-    private PVector<Object> updateIn(PVector<Object> v, PVector<SorI> path, Object value, PVector<SorI> prevPath)
+    private PVector<Object> updateIn(PVector<Object> v, PVector<Object> path, Object value, PVector<Object> prevPath)
     {
         if(!path.isEmpty()) {
-            SorI p0 = path.get(0);
-            if(p0.isStringKey()){
-                if(errorPort.isConnected())
+            Object p0 = path.get(0);
+            if (p0 instanceof String) {
+                if (errorPort.isConnected())
                     errorPort.send(create("Path [" + prevPath.plus(p0) + "] doesn't designate a MAP. Waiting for next IP.!"));
                 return v;
+            } else if (p0 instanceof Integer) {
+                int index = (Integer)p0;
+                PVector<Object> restPath = path.minus(0);
+                if (index < v.size()) {
+                    if (restPath.isEmpty())
+                        return v.with(index, value);
+                    else {
+                        Object o = v.get(index);
+                        if (Map.class.isAssignableFrom(o.getClass())) {
+                            return v.with(index, updateIn(HashTreePMap.from((Map<String, Object>)o), restPath, value, prevPath.plus(p0)));
+                        } else if (Collection.class.isAssignableFrom(o.getClass())) {
+                            return v.with(index, updateIn(TreePVector.from((Collection<Object>)o), restPath, value, prevPath.plus(p0)));
+                        } else if (errorPort.isConnected())
+                            errorPort.send(create("Path [" + prevPath.plus(p0) + "] doesn't designate a MAP or VECTOR/LIST. Waiting for next IP.!"));
+                    }
+                } else if (errorPort.isConnected())
+                    errorPort.send(create("Path [" + prevPath.plus(p0) + "] doesn't designate a value. Waiting for next IP.!"));
             }
-            int index = p0.index;
-            PVector<SorI> restPath = path.minus(0);
-            if (index < v.size()) {
-                if (restPath.isEmpty())
-                    return v.with(index, value);
-                else {
-                    Object o = v.get(index);
-                    if(Map.class.isAssignableFrom(o.getClass())){
-                        return v.with(index, updateIn(HashTreePMap.from((Map)o), restPath, value, prevPath.plus(p0)));
-                    } else if(Collection.class.isAssignableFrom(o.getClass())) {
-                        return v.with(index, updateIn(TreePVector.from((Collection)o), restPath, value, prevPath.plus(p0)));
-                    } else if(errorPort.isConnected())
-                        errorPort.send(create("Path [" + prevPath.plus(p0) + "] doesn't designate a MAP or VECTOR/LIST. Waiting for next IP.!"));
-                }
-            } else if(errorPort.isConnected())
-                errorPort.send(create("Path [" + prevPath.plus(p0) + "] doesn't designate a value. Waiting for next IP.!"));
         }
         return v;
     }
@@ -164,7 +192,7 @@ public class SetValueInPMapOrVec extends Component {
     protected void openPorts() {
         valuePort = openInput("VALUE");
         pathPort = openInput("PATH");
-        dsPort = openInput("DS");
+        collPort = openInput("COLL");
         outPort = openOutput("OUT");
         errorPort = openOutput("ERROR");
     }

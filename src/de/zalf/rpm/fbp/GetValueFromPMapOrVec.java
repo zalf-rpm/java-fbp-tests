@@ -19,7 +19,7 @@ import org.pcollections.*;
 public class GetValueFromPMapOrVec extends Component {
     InputPort inPort;
     InputPort pathPort;
-    OutputPort valuePort;
+    OutputPort outPort;
     OutputPort passPort;
     OutputPort errorPort;
 
@@ -59,7 +59,7 @@ public class GetValueFromPMapOrVec extends Component {
             } else if(pp.getType() == Packet.CLOSE){
                 pathLevel--;
                 drop(pp);
-                valuePort.send(create(Packet.CLOSE, ""));
+                outPort.send(create(Packet.CLOSE, ""));
                 pp = pathPort.receive();
                 if(pp == null)
                     return;
@@ -136,11 +136,11 @@ public class GetValueFromPMapOrVec extends Component {
         }
 
         if(sendInOpenBracket){
-            valuePort.send(create(Packet.OPEN, ""));
+            outPort.send(create(Packet.OPEN, ""));
             sendInOpenBracket = false;
         }
 
-        valuePort.send(create(o));
+        outPort.send(create(o));
         if(passPort.isConnected())
             passPort.send(create(origIn));
 
@@ -150,7 +150,7 @@ public class GetValueFromPMapOrVec extends Component {
     protected void openPorts() {
         inPort = openInput("IN");
         pathPort = openInput("PATH");
-        valuePort = openOutput("OUT");
+        outPort = openOutput("OUT");
         passPort = openOutput("PASS");
         errorPort = openOutput("ERROR");
     }
