@@ -6,17 +6,17 @@ import java.util.List;
 import java.util.Map;
 import org.pcollections.*;
 
-@ComponentDescription("Get a value in a MAP under the given path (which may contain indices for lists).")
+@ComponentDescription("Get a value from the PMap or PVector under the given path (which may contain indices for lists).")
 @InPorts({
-        @InPort(value = "PATH", description = "Path to value in possibly nested maps", type = PVector.class),
-        @InPort(value = "IN", description = "Map representing JSON Object", type = PCollection.class),
+        @InPort(value = "PATH", description = "Path to value in possibly nested maps", type = List.class),
+        @InPort(value = "IN", description = "PMap or PVector representing JSON datastructure"),
 })
 @OutPorts({
         @OutPort(value = "OUT", description = "The requested value"),
-        @OutPort(value = "PASS", description = "The original MAP passed through", type = PCollection.class, optional = true),
+        @OutPort(value = "PASS", description = "The original PMap or PVector passed through", optional = true),
         @OutPort(value = "ERROR", description = "Error message", type = String.class, optional = true)
 })
-public class GetValueFromMap extends Component {
+public class GetValueFromPMapOrVec extends Component {
     InputPort inPort;
     InputPort pathPort;
     OutputPort valuePort;
@@ -36,14 +36,15 @@ public class GetValueFromMap extends Component {
     PVector<SorI> path;
     int pathLevel = 0;
 
-    PCollection coll;
-    int collLevel = 0;
+    Object origIn;
+    int inLevel = 0;
+    boolean sendInOpenBracket = false;
 
     @Override
     protected void execute() {
 
         //receive new path if possible
-        if(pathLevel >= collLevel || path.isEmpty()) {
+        if(pathLevel >= inLevel || path.isEmpty()) {
             Packet pp = pathPort.receive();
             if (pp == null)
                 return;
@@ -51,18 +52,20 @@ public class GetValueFromMap extends Component {
             if(pp.getType() == Packet.OPEN){
                 pathLevel++;
                 drop(pp);
+                sendInOpenBracket = true;
                 pp = pathPort.receive();
                 if(pp == null)
                     return;
             } else if(pp.getType() == Packet.CLOSE){
                 pathLevel--;
                 drop(pp);
+                valuePort.send(create(Packet.CLOSE, ""));
                 pp = pathPort.receive();
                 if(pp == null)
                     return;
             }
 
-            PVector p = (PVector) pp.getContent();
+            List p = (List) pp.getContent();
             drop(pp);
             path = Empty.vector();
             for (Object o : p) {
@@ -73,32 +76,32 @@ public class GetValueFromMap extends Component {
             }
         }
 
-        //receive new coll if possible
-        if(collLevel >= pathLevel || coll == null) {
-            //try to read a coll packet
+        //receive new origIn if possible
+        if(inLevel >= pathLevel || origIn == null) {
+            //try to read a origIn packet
             Packet mp = inPort.receive();
             if (mp == null)
                 return;
 
             if (mp.getType() == Packet.OPEN) {
-                collLevel++;
+                inLevel++;
                 drop(mp);
                 mp = inPort.receive();
                 if (mp == null)
                     return;
             } else if (mp.getType() == Packet.CLOSE) {
-                collLevel--;
+                inLevel--;
                 drop(mp);
                 mp = inPort.receive();
                 if (mp == null)
                     return;
             }
 
-            coll = (PCollection) mp.getContent();
+            origIn = mp.getContent();
             drop(mp);
         }
 
-        Object o  = coll;
+        Object o  = origIn;
         PVector<SorI> prevPath = Empty.vector();
         for(SorI key : path) {
             if(key.isIndex()){
@@ -132,9 +135,14 @@ public class GetValueFromMap extends Component {
             prevPath = prevPath.plus(key);
         }
 
+        if(sendInOpenBracket){
+            valuePort.send(create(Packet.OPEN, ""));
+            sendInOpenBracket = false;
+        }
+
         valuePort.send(create(o));
         if(passPort.isConnected())
-            passPort.send(create(coll));
+            passPort.send(create(origIn));
 
     }
 

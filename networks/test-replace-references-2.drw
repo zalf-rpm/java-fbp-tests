@@ -7,15 +7,15 @@ xsi:noNamespaceSchemaLocation="https://github.com/jpaulm/drawfbp/blob/master/lib
 </block> 
 <block> <x> -1178 </x> <y> 602 </y> <id> 5 </id> <type>I</type> <width>78</width> <height>18</height> <description>site.json</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 
-<block> <x> 300 </x> <y> 914 </y> <id> 7 </id> <type>B</type> <width>92</width> <height>64</height> <description>map -\> json</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.CreateJsonStringFromMap</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+<block> <x> 300 </x> <y> 914 </y> <id> 7 </id> <type>B</type> <width>92</width> <height>64</height> <description>map -\> json</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.PMapOrVecToJsonString</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
 </block> 
 <block> <x> 494 </x> <y> 869 </y> <id> 8 </id> <type>B</type> <width>92</width> <height>64</height> <description>to console</description> <blockclassname>C:/Users/berg.ZALF-AD/ownCloud/zalf/fbp/javafbp-4.1.0.jar!com.jpaulmorrison.fbp.core.components.misc.WriteToConsole</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 
-<block> <x> -738 </x> <y> 179 </y> <id> 9 </id> <type>B</type> <width>92</width> <height>64</height> <description>sim -\> map</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.CreateMapFromJsonFile</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+<block> <x> -738 </x> <y> 179 </y> <id> 9 </id> <type>B</type> <width>92</width> <height>64</height> <description>sim -\> map</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.JsonFileToPMapOrVec</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
 </block> 
-<block> <x> -738 </x> <y> 414 </y> <id> 10 </id> <type>B</type> <width>92</width> <height>64</height> <description>crop -\> map</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.CreateMapFromJsonFile</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+<block> <x> -738 </x> <y> 414 </y> <id> 10 </id> <type>B</type> <width>92</width> <height>64</height> <description>crop -\> map</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.JsonFileToPMapOrVec</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
 </block> 
-<block> <x> -738 </x> <y> 626 </y> <id> 11 </id> <type>B</type> <width>92</width> <height>64</height> <description>site -\> map</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.CreateMapFromJsonFile</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+<block> <x> -738 </x> <y> 626 </y> <id> 11 </id> <type>B</type> <width>92</width> <height>64</height> <description>site -\> map</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.JsonFileToPMapOrVec</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
 </block> 
 <block> <x> -566 </x> <y> 178 </y> <id> 12 </id> <type>B</type> <width>92</width> <height>64</height> <description>replace
 sim refs</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.ReplaceReferences</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
@@ -27,35 +27,35 @@ crop refs</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-te
 site refs</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.ReplaceReferences</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 
 <block> <x> -384 </x> <y> -6 </y> <id> 21 </id> <type>B</type> <width>92</width> <height>64</height> <description>template 
--\> map</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.CreateMapFromJsonFile</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+-\> map</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.JsonFileToPMapOrVec</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
 </block> 
 <block> <x> -592 </x> <y> -2 </y> <id> 22 </id> <type>I</type> <width>145</width> <height>18</height> <description>env-template.json</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 
 <block> <x> -181 </x> <y> -6 </y> <id> 23 </id> <type>B</type> <width>92</width> <height>64</height> <description>set 
-debugMode</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.SetValueInMap</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+debugMode</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.SetValueInPMapOrVec</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
 </block> 
 <block> <x> -177 </x> <y> -94 </y> <id> 24 </id> <type>I</type> <width>78</width> <height>18</height> <description>debugMode</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 
 <block> <x> -384 </x> <y> 177 </y> <id> 25 </id> <type>B</type> <width>92</width> <height>64</height> <description>get
-debug?</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.GetValueFromMap</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+debug?</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.GetValueFromPMapOrVec</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
 </block> 
 <block> <x> -390 </x> <y> 107 </y> <id> 26 </id> <type>I</type> <width>52</width> <height>18</height> <description>debug?</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 
 <block> <x> 10 </x> <y> -4 </y> <id> 27 </id> <type>B</type> <width>92</width> <height>64</height> <description>set
-events</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.SetValueInMap</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+events</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.SetValueInPMapOrVec</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
 </block> 
 <block> <x> 775 </x> <y> -100 </y> <id> 28 </id> <type>I</type> <width>237</width> <height>18</height> <description>params, simulationParameters</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 
 <block> <x> -190 </x> <y> 179 </y> <id> 29 </id> <type>B</type> <width>92</width> <height>64</height> <description>get
-events</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.GetValueFromMap</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+events</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.GetValueFromPMapOrVec</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
 </block> 
 <block> <x> -185 </x> <y> 104 </y> <id> 30 </id> <type>I</type> <width>120</width> <height>18</height> <description>output, events</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 
 <block> <x> 369 </x> <y> 412 </y> <id> 31 </id> <type>B</type> <width>92</width> <height>64</height> <description>get
-cropRotation</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.GetValueFromMap</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+cropRotation</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.GetValueFromPMapOrVec</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
 </block> 
 <block> <x> 596 </x> <y> 248 </y> <id> 32 </id> <type>B</type> <width>92</width> <height>64</height> <description>set
-cropRotation</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.SetValueInMap</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+cropRotation</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.SetValueInPMapOrVec</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
 </block> 
 <block> <x> 678 </x> <y> 177 </y> <id> 34 </id> <type>I</type> <width>103</width> <height>18</height> <description>cropRotation</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 
@@ -64,28 +64,28 @@ cropRotation</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp
 <block> <x> 969 </x> <y> 806 </y> <id> 39 </id> <type>B</type> <width>92</width> <height>64</height> <description>drop site</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.Sink</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 
 <block> <x> 725 </x> <y> -6 </y> <id> 40 </id> <type>B</type> <width>92</width> <height>64</height> <description>set
-simParams</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.SetValueInMap</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+simParams</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.SetValueInPMapOrVec</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
 </block> 
 <block> <x> 9 </x> <y> 183 </y> <id> 42 </id> <type>B</type> <width>92</width> <height>64</height> <description>get
-output</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.GetValueFromMap</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+output</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.GetValueFromPMapOrVec</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
 </block> 
 <block> <x> 193 </x> <y> 179 </y> <id> 43 </id> <type>B</type> <width>92</width> <height>64</height> <description>get
-climate.csv</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.GetValueFromMap</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+climate.csv</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.GetValueFromPMapOrVec</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
 </block> 
 <block> <x> 369 </x> <y> 179 </y> <id> 44 </id> <type>B</type> <width>92</width> <height>64</height> <description>get
 climate.csv
-options</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.GetValueFromMap</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+options</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.GetValueFromPMapOrVec</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
 </block> 
 <block> <x> 185 </x> <y> -7 </y> <id> 45 </id> <type>B</type> <width>92</width> <height>64</height> <description>set
-outputs</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.SetValueInMap</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+outputs</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.SetValueInPMapOrVec</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
 </block> 
 <block> <x> 365 </x> <y> -9 </y> <id> 46 </id> <type>B</type> <width>92</width> <height>64</height> <description>set
 climate.csv
-path</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.SetValueInMap</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+path</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.SetValueInPMapOrVec</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
 </block> 
 <block> <x> 546 </x> <y> -6 </y> <id> 47 </id> <type>B</type> <width>92</width> <height>64</height> <description>set
 csv via header
-options</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.SetValueInMap</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+options</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.SetValueInPMapOrVec</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
 </block> 
 <block> <x> 7 </x> <y> 100 </y> <id> 48 </id> <type>I</type> <width>52</width> <height>18</height> <description>output</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 

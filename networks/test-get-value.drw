@@ -1,11 +1,11 @@
 <?xml version="1.0"?> 
  <drawfbp_file xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 xsi:noNamespaceSchemaLocation="https://github.com/jpaulm/drawfbp/blob/master/lib/drawfbp_file.xsd"><net> <desc> </desc> <complang>Java</complang> <clicktogrid>true</clicktogrid> 
-<blocks><block> <x> 310 </x> <y> 439 </y> <id> 1 </id> <type>B</type> <width>92</width> <height>64</height> <description>read sim</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.CreateMapFromJsonFile</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+<blocks><block> <x> 310 </x> <y> 439 </y> <id> 1 </id> <type>B</type> <width>92</width> <height>64</height> <description>read sim</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.JsonFileToPMapOrVec</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
 </block> 
-<block> <x> 310 </x> <y> 271 </y> <id> 2 </id> <type>B</type> <width>92</width> <height>64</height> <description>string-\>map</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.CreateMapFromJsonString</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+<block> <x> 310 </x> <y> 271 </y> <id> 2 </id> <type>B</type> <width>92</width> <height>64</height> <description>string-\>map</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.JsonStringToPMapOrVec</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
 </block> 
-<block> <x> 574 </x> <y> 350 </y> <id> 3 </id> <type>B</type> <width>92</width> <height>64</height> <description>get value</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.GetValueFromMap</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+<block> <x> 574 </x> <y> 350 </y> <id> 3 </id> <type>B</type> <width>92</width> <height>64</height> <description>get value</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.GetValueFromPMapOrVec</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
 </block> 
 <block> <x> 849 </x> <y> 350 </y> <id> 4 </id> <type>B</type> <width>92</width> <height>64</height> <description>to console</description> <blockclassname>C:/Users/berg.ZALF-AD/ownCloud/zalf/fbp/javafbp-4.1.0.jar!com.jpaulmorrison.fbp.core.components.misc.WriteToConsole</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 

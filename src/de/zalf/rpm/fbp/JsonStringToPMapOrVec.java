@@ -7,22 +7,21 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import org.pcollections.HashPMap;
-import org.pcollections.PCollection;
 import org.pcollections.TreePVector;
 
-@ComponentDescription("Create a MAP from a JSON string")
+@ComponentDescription("Create a PMap or PVector depending on the content of the JSON string")
 @InPort(value = "IN", description = "String of JSON object", type = String.class)
-@OutPort(value = "OUT", description = "Map representation of JSON object", type = PCollection.class)
-public class CreateMapFromJsonString extends Component {
+@OutPort(value = "OUT", description = "PMap or PVector representation of JSON file content")
+public class JsonStringToPMapOrVec extends Component {
     InputPort inPort;
     OutputPort outPort;
 
+    ObjectMapper om = new ObjectMapper().registerModule(new PCollectionsModule());
+
     @Override
     protected void execute() {
-        ObjectMapper om = new ObjectMapper().registerModule(new PCollectionsModule());
-
-        Packet p = inPort.receive();
-        while (p != null) {
+        Packet p;
+        while ((p  = inPort.receive()) != null) {
             String s = (String)p.getContent();
             drop(p);
 
@@ -40,8 +39,6 @@ public class CreateMapFromJsonString extends Component {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-            p = inPort.receive();
         }
     }
 

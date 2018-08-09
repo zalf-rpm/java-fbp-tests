@@ -5,12 +5,9 @@ import com.jpaulmorrison.fbp.core.engine.*;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.util.Map;
-import org.pcollections.PMap;
-
-@InPort(value = "IN", description = "Map representation of JSON object", type = PMap.class)
+@InPort(value = "IN", description = "PMap or PVector representation of JSON datastructure")
 @OutPort(value = "OUT", description = "String of JSON object", type = String.class)
-public class CreateJsonStringFromMap extends Component {
+public class PMapOrVecToJsonString extends Component {
     InputPort inPort;
     OutputPort outPort;
 
@@ -18,22 +15,18 @@ public class CreateJsonStringFromMap extends Component {
 
     @Override
     protected void execute() {
-
-
-        Packet p = inPort.receive();
-        while (p != null) {
-            Map m = (Map)p.getContent();
+        Packet p;
+        while ((p  = inPort.receive()) != null) {
+            Object o = p.getContent();
+            drop(p);
 
             try {
-                String s = om.writerWithDefaultPrettyPrinter().writeValueAsString(m);
-                drop(p);
+                String s = om.writerWithDefaultPrettyPrinter().writeValueAsString(o);
                 Packet out = create(s);
                 outPort.send(out);
             } catch (JsonProcessingException e) {
                 e.printStackTrace();
             }
-
-            p = inPort.receive();
         }
     }
 

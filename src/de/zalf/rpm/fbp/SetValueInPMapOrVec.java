@@ -3,23 +3,24 @@ package de.zalf.rpm.fbp;
 import com.jpaulmorrison.fbp.core.engine.*;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import org.pcollections.*;
 
-@ComponentDescription("Set a value in a MAP under the given path (which may contain indices for lists).")
+@ComponentDescription("Set a value in a PMap or PVector under the given path (which may contain indices for lists).")
 @InPorts({
         @InPort(value = "VALUE", description = "Value to set"),
-        @InPort(value = "PATH", description = "Path (a string) to value in possibly nested maps", type = String.class),
-        @InPort(value = "MAP", description = "Map representing JSON Object", type = PMap.class),
+        @InPort(value = "PATH", description = "Path to value in possibly nested datastructures", type = List.class),
+        @InPort(value = "MAP", description = "PMap or PVector representing JSON datastructure"),
 })
 @OutPorts({
-        @OutPort(value = "OUT", description = "Map representation of JSON object", type = PMap.class),
+        @OutPort(value = "OUT", description = "PMap or PVector representation of JSON datastructure"),
         @OutPort(value = "ERROR", description = "Error message", type = String.class, optional = true)
 })
-public class SetValueInMap extends Component {
+public class SetValueInPMapOrVec extends Component {
     InputPort valuePort;
     InputPort pathPort;
-    InputPort mapPort;
+    InputPort dsPort;
     OutputPort outPort;
     OutputPort errorPort;
 
@@ -59,26 +60,26 @@ public class SetValueInMap extends Component {
             pathPort.close();
         }
 
-        //try to read a coll packet
-        Packet mp = mapPort.receive();
+        //try to read a origIn packet
+        Packet mp = dsPort.receive();
         if (mp == null) {
-            //makes no sense to continue (read values) without coll, so close the component
+            //makes no sense to continue (read values) without origIn, so close the component
             if(errorPort.isConnected())
                 errorPort.send(create("No MAPs available. Terminating process!"));
-            mapPort.close();
+            dsPort.close();
             valuePort.close();
             return;
         }
         currentMap = (HashPMap<String, Object>) mp.getContent();
         drop(mp);
-        //if message content was no coll, wait for next IP on MAP port
+        //if message content was no origIn, wait for next IP on MAP port
         if(currentMap == null) {
             if(errorPort.isConnected())
                 errorPort.send(create("IP was not of type HashPMap. Waiting for next IP.!"));
             return;
         }
 
-        //we got a valid coll, try to set values
+        //we got a valid origIn, try to set values
         Packet vp;
         while ((vp = valuePort.receive()) != null) {
             if(vp.getType() == Packet.OPEN) {
@@ -87,7 +88,7 @@ public class SetValueInMap extends Component {
             } else if(vp.getType() == Packet.CLOSE) {
                 drop(vp);
                 currentMap = null;
-                //deactivate component and continue with a new coll
+                //deactivate component and continue with a new origIn
                 return;
             }
             Object v = vp.getContent();
@@ -163,7 +164,7 @@ public class SetValueInMap extends Component {
     protected void openPorts() {
         valuePort = openInput("VALUE");
         pathPort = openInput("PATH");
-        mapPort = openInput("MAP");
+        dsPort = openInput("DS");
         outPort = openOutput("OUT");
         errorPort = openOutput("ERROR");
     }
