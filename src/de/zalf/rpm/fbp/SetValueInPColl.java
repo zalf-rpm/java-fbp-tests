@@ -7,17 +7,17 @@ import java.util.List;
 import java.util.Map;
 import org.pcollections.*;
 
-@ComponentDescription("Set a value in a PMap or PVector under the given path (which may contain indices for lists).")
+@ComponentDescription("Set a value in a PMap or PVector under the given path (which may contain keys for lists).")
 @InPorts({
         @InPort(value = "VALUE", description = "Value to set"),
-        @InPort(value = "PATH", description = "Path to value in possibly nested datastructures", type = List.class),
-        @InPort(value = "COLL", description = "PMap or PVector representing JSON datastructure"),
+        @InPort(value = "PATH", description = "Path List<Object> or single key (Object == Index or String) to value in possibly nested datastructures"),
+        @InPort(value = "COLL", description = "PMap<String, Object> or PVector<Object>"),
 })
 @OutPorts({
-        @OutPort(value = "OUT", description = "PMap or PVector representation of JSON datastructure"),
+        @OutPort(value = "OUT", description = "PMap<String, Object> or PVector<Object>"),
         @OutPort(value = "ERROR", description = "Error message", type = String.class, optional = true)
 })
-public class SetValueInPMapOrVec extends Component {
+public class SetValueInPColl extends Component {
     InputPort valuePort;
     InputPort pathPort;
     InputPort collPort;
@@ -54,7 +54,11 @@ public class SetValueInPMapOrVec extends Component {
             }
 
             if(pp != null) {
-                path = TreePVector.from((List) pp.getContent());
+                Object p = pp.getContent();
+                if(p instanceof String)
+                    path = Empty.vector().plus(p);
+                else
+                    path = TreePVector.from((List)pp.getContent());
                 drop(pp);
                 return true;
             }

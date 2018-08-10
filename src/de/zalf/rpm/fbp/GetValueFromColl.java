@@ -6,34 +6,24 @@ import java.util.List;
 import java.util.Map;
 import org.pcollections.*;
 
-@ComponentDescription("Get a value from the PMap or PVector under the given path (which may contain indices for lists).")
+@ComponentDescription("Get a value from the PMap or PVector under the given path (which may contain keys for lists).")
 @InPorts({
-        @InPort(value = "PATH", description = "Path to value in possibly nested maps", type = List.class),
-        @InPort(value = "IN", description = "PMap or PVector representing JSON datastructure"),
+        @InPort(value = "PATH", description = "Path List<Object> or single key (Object == Integer (index) or String) to value in possibly nested maps"),
+        @InPort(value = "IN", description = "Map<String, Object> or List<Object>"),
 })
 @OutPorts({
         @OutPort(value = "OUT", description = "The requested value"),
         @OutPort(value = "PASS", description = "The original PMap or PVector passed through", optional = true),
         @OutPort(value = "ERROR", description = "Error message", type = String.class, optional = true)
 })
-public class GetValueFromPMapOrVec extends Component {
+public class GetValueFromColl extends Component {
     InputPort inPort;
     InputPort pathPort;
     OutputPort outPort;
     OutputPort passPort;
     OutputPort errorPort;
 
-    class SorI {
-        SorI(String k){ key = k; }
-        SorI(int i){ index = i; }
-        String key;
-        int index = -1;
-        boolean isIndex() { return index >= 0; }
-        boolean isStringKey() { return !isIndex(); }
-        public String toString() { return index < 0 ? "" + index : key; }
-    }
-
-    PVector<SorI> path;
+    PVector path;
     int pathLevel = 0;
 
     Object origIn;
@@ -65,15 +55,12 @@ public class GetValueFromPMapOrVec extends Component {
                     return;
             }
 
-            List p = (List) pp.getContent();
+            Object p = pp.getContent();
+            if(p instanceof String)
+                path = Empty.vector().plus(p);
+            else
+                path = TreePVector.from((List) pp.getContent());
             drop(pp);
-            path = Empty.vector();
-            for (Object o : p) {
-                if(o instanceof String)
-                    path = path.plus(new SorI((String)o));
-                else if(o instanceof Integer)
-                    path = path.plus(new SorI((Integer)o));
-            }
         }
 
         //receive new origIn if possible
@@ -102,37 +89,41 @@ public class GetValueFromPMapOrVec extends Component {
         }
 
         Object o  = origIn;
-        PVector<SorI> prevPath = Empty.vector();
-        for(SorI key : path) {
-            if(key.isIndex()){
+        PVector prevPath = Empty.vector();
+        for(Object k : path) {
+            if(k instanceof Integer){
+                int key = (Integer)k;
                 if(List.class.isAssignableFrom(o.getClass())){
                     List l = (List)o;
-                    if(key.index < l.size())
-                        o = l.get(key.index);
+                    if(key < l.size())
+                        o = l.get(key);
                     else if(errorPort.isConnected()) {
-                        errorPort.send(create("Path [" + prevPath.plus(key) + "] doesn't designate a valid index. Waiting for next IP.!"));
+                        errorPort.send(create("Path [" + prevPath.plus(k) + "] doesn't designate a valid index. Waiting for next IP.!"));
                         return;
                     }
                 } else if(errorPort.isConnected()) {
-                    errorPort.send(create("Path [" + prevPath.plus(key) + "] doesn't designate a VECTOR/LIST. Waiting for next IP.!"));
+                    errorPort.send(create("Path [" + prevPath.plus(k) + "] doesn't designate a VECTOR/LIST. Waiting for next IP.!"));
+                    return;
+                }
+            } else if(k instanceof String) {
+                String key = (String)k;
+                if(Map.class.isAssignableFrom(o.getClass())){
+                    Map m = (Map)o;
+                    if(m.containsKey(key))
+                        o = m.get(key);
+                    else if(errorPort.isConnected()) {
+                        errorPort.send(create("Path [" + prevPath.plus(k) + "] doesn't designate a valid key in MAP. Waiting for next IP.!"));
+                        return;
+                    }
+                } else if(errorPort.isConnected()) {
+                    errorPort.send(create("Path [" + prevPath.plus(k) + "] doesn't designate a MAP. Waiting for next IP.!"));
                     return;
                 }
             } else {
-                if(Map.class.isAssignableFrom(o.getClass())){
-                    Map m = (Map)o;
-                    if(m.containsKey(key.key))
-                        o = m.get(key.key);
-                    else if(errorPort.isConnected()) {
-                        errorPort.send(create("Path [" + prevPath.plus(key) + "] doesn't designate a valid key in MAP. Waiting for next IP.!"));
-                        return;
-                    }
-                } else if(errorPort.isConnected()) {
-                    errorPort.send(create("Path [" + prevPath.plus(key) + "] doesn't designate a MAP. Waiting for next IP.!"));
-                    return;
-                }
+                return;
             }
 
-            prevPath = prevPath.plus(key);
+            prevPath = prevPath.plus(k);
         }
 
         if(sendInOpenBracket){

@@ -5,9 +5,10 @@ import com.jpaulmorrison.fbp.core.engine.*;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@InPort(value = "IN", description = "PMap or PVector representation of JSON datastructure")
+@ComponentDescription("Serialize value into JSON string")
+@InPort(value = "IN", description = "Value")
 @OutPort(value = "OUT", description = "String of JSON object", type = String.class)
-public class PMapOrVecToJsonString extends Component {
+public class ToJsonString extends Component {
     InputPort inPort;
     OutputPort outPort;
 

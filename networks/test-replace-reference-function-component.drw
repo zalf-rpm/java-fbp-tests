@@ -8,11 +8,11 @@ functions</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-te
 </block> 
 <block> <x> 393 </x> <y> 133 </y> <id> 4 </id> <type>B</type> <width>92</width> <height>64</height> <description>concat file</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.ConcatString</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 
-<block> <x> 598 </x> <y> 133 </y> <id> 5 </id> <type>B</type> <width>92</width> <height>64</height> <description>json -\> map</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.JsonStringToPMapOrVec</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
+<block> <x> 598 </x> <y> 133 </y> <id> 5 </id> <type>B</type> <width>92</width> <height>64</height> <description>json -\> map</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.JsonStringToPColl</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
 </block> 
 <block> <x> 53 </x> <y> 130 </y> <id> 6 </id> <type>I</type> <width>78</width> <height>18</height> <description>crop.json</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 
-<block> <x> 1010 </x> <y> 134 </y> <id> 9 </id> <type>B</type> <width>92</width> <height>64</height> <description>map -\> json</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.PMapOrVecToJsonString</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
+<block> <x> 1010 </x> <y> 134 </y> <id> 9 </id> <type>B</type> <width>92</width> <height>64</height> <description>map -\> json</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.ToJsonString</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
 </block> 
 <block> <x> 1197 </x> <y> 134 </y> <id> 10 </id> <type>B</type> <width>92</width> <height>64</height> <description>to console</description> <blockclassname>C:/Users/berg.ZALF-AD/ownCloud/zalf/fbp/javafbp-4.1.0.jar!com.jpaulmorrison.fbp.core.components.misc.WriteToConsole</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 

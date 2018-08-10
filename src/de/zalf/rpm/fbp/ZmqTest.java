@@ -13,18 +13,53 @@ public class ZmqTest extends Network {
         //defineReplaceReferencesComponentTest();
         //defineCreateEnvSubnetTest();
         //defineGetValueTest();
-        defineSetValueTest();
+        //defineSetValueTest();
+        defineMappingTest();
+    }
+
+    protected void defineMappingTest(){
+        component("read_mapping",de.zalf.rpm.fbp.JsonFileToPColl.class);
+        component("List_to_IPs_1",de.zalf.rpm.fbp.ListToIPs.class);
+        component("split_map",de.zalf.rpm.fbp.SplitMap.class);
+        component("List_to_IPs_2",de.zalf.rpm.fbp.ListToIPs.class);
+        component("split_list",de.zalf.rpm.fbp.SplitList.class);
+        component("to_SS_1",de.zalf.rpm.fbp.ToSubstream.class);
+        component("to_SS_2",de.zalf.rpm.fbp.ToSubstream.class);
+        component("to_console_3",com.jpaulmorrison.fbp.core.components.misc.WriteToConsole.class);
+        component("to_string_2",de.zalf.rpm.fbp.ToJsonString.class);
+        component("get_value",de.zalf.rpm.fbp.GetValueFromColl.class);
+        component("read_files",de.zalf.rpm.fbp.JsonFileToPColl.class);
+        component("set_value",de.zalf.rpm.fbp.SetValueInPColl.class);
+        component("read_template",de.zalf.rpm.fbp.JsonFileToPColl.class);
+        initialize("env-template.json", component("read_template"), port("IN"));
+        connect(component("read_mapping"), port("OUT"), component("List_to_IPs_1"), port("IN"));
+        connect(component("read_template"), port("OUT"), component("set_value"), port("COLL"));
+        connect(component("List_to_IPs_1"), port("OUT"), component("split_map"), port("IN"));
+        connect(component("get_value"), port("OUT"), component("set_value"), port("VALUE"));
+        connect(component("to_SS_1"), port("OUT"), component("set_value"), port("PATH"));
+        connect(component("split_map"), port("OUT[1]"), component("List_to_IPs_2"), port("IN"));
+        connect(component("set_value"), port("OUT"), component("to_string_2"), port("IN"));
+        connect(component("List_to_IPs_2"), port("OUT"), component("split_list"), port("IN"));
+        connect(component("split_list"), port("OUT[0]"), component("to_SS_2"), port("IN"));
+        connect(component("split_list"), port("OUT[1]"), component("to_SS_1"), port("IN"));
+        initialize("0,1", component("split_list"), port("SEL"));
+        initialize("get-from, mapping", component("split_map"), port("SEL"));
+        initialize("mapping.json", component("read_mapping"), port("IN"));
+        connect(component("to_string_2"), port("OUT"), component("to_console_3"), port("IN"));
+        connect(component("split_map"), port("OUT[0]"), component("read_files"), port("IN"));
+        connect(component("read_files"), port("OUT"), component("get_value"), port("IN"));
+        connect(component("to_SS_2"), port("OUT"), component("get_value"), port("PATH"));
     }
 
     protected void defineSetValueTest(){
-        component("read_sim",de.zalf.rpm.fbp.JsonFileToPMapOrVec.class);
-        component("read_paths",de.zalf.rpm.fbp.JsonStringToPMapOrVec.class);
-        component("set_value",de.zalf.rpm.fbp.SetValueInPMapOrVec.class);
+        component("read_sim", JsonFileToPColl.class);
+        component("read_paths", JsonStringToPColl.class);
+        component("set_value", SetValueInPColl.class);
         component("to_console",com.jpaulmorrison.fbp.core.components.misc.WriteToConsole.class);
-        component("read_values",de.zalf.rpm.fbp.JsonStringToPMapOrVec.class);
+        component("read_values", JsonStringToPColl.class);
         component("split_values",de.zalf.rpm.fbp.ListToIPs.class);
         component("split_paths",de.zalf.rpm.fbp.ListToIPs.class);
-        component("coll->string",de.zalf.rpm.fbp.PMapOrVecToJsonString.class);
+        component("coll->string", ToJsonString.class);
         connect(component("read_sim"), port("OUT"), component("set_value"), port("COLL"));
         initialize("sim-simple.json", component("read_sim"), port("IN"));
         initialize("[[\"climate.csv-options\", \"start-date\"], [\"crop.json\"]]", component("read_paths"), port("IN"));
@@ -32,16 +67,16 @@ public class ZmqTest extends Network {
         connect(component("split_paths"), port("OUT"), component("set_value"), port("PATH"));
         connect(component("split_values"), port("OUT"), component("set_value"), port("VALUE"));
         connect(component("read_values"), port("OUT"), component("split_values"), port("IN"));
-        initialize("[\"what\", \"the\", \"heck\"]", component("read_values"), port("IN"));
+        initialize("[1, 2, 3]", component("read_values"), port("IN"));
         initialize("0", component("split_values"), port("SSL"));
         connect(component("set_value"), port("OUT"), component("coll->string"), port("IN"));
         connect(component("coll->string"), port("OUT"), component("to_console"), port("IN"));
     }
 
     protected void defineGetValueTest(){
-        component("read_sim", JsonFileToPMapOrVec.class);
-        component("string->origIn", JsonStringToPMapOrVec.class);
-        component("get_value", GetValueFromPMapOrVec.class);
+        component("read_sim", JsonFileToPColl.class);
+        component("string->origIn", JsonStringToPColl.class);
+        component("get_value", GetValueFromColl.class);
         component("to_console",com.jpaulmorrison.fbp.core.components.misc.WriteToConsole.class);
         connect(component("get_value"), port("OUT"), component("to_console"), port("IN"));
         connect(component("read_sim"), port("OUT"), component("get_value"), port("IN"));
@@ -51,21 +86,21 @@ public class ZmqTest extends Network {
     }
 
     protected void defineCreateEnvSubnetTest(){
-        component("map_->_json", PMapOrVecToJsonString.class);
+        component("map_->_json", ToJsonString.class);
         component("to_console",com.jpaulmorrison.fbp.core.components.misc.WriteToConsole.class);
-        component("sim_->_map", JsonFileToPMapOrVec.class);
-        component("crop_->_map", JsonFileToPMapOrVec.class);
-        component("site_->_map", JsonFileToPMapOrVec.class);
+        component("sim_->_map", JsonFileToPColl.class);
+        component("crop_->_map", JsonFileToPColl.class);
+        component("site_->_map", JsonFileToPColl.class);
         component("replace_sim_refs",de.zalf.rpm.fbp.ReplaceReferences.class);
         component("replace__crop_refs",de.zalf.rpm.fbp.ReplaceReferences.class);
         component("replace__site_refs",de.zalf.rpm.fbp.ReplaceReferences.class);
-        component("template__->_map", JsonFileToPMapOrVec.class);
-        component("set__debugMode", SetValueInPMapOrVec.class);
-        component("get_debug?", GetValueFromPMapOrVec.class);
-        component("set_simParams", SetValueInPMapOrVec.class);
-        component("get_events", GetValueFromPMapOrVec.class);
-        component("get_cropRotation", GetValueFromPMapOrVec.class);
-        component("set_cropRotation", SetValueInPMapOrVec.class);
+        component("template__->_map", JsonFileToPColl.class);
+        component("set__debugMode", SetValueInPColl.class);
+        component("get_debug?", GetValueFromColl.class);
+        component("set_simParams", SetValueInPColl.class);
+        component("get_events", GetValueFromColl.class);
+        component("get_cropRotation", GetValueFromColl.class);
+        component("set_cropRotation", SetValueInPColl.class);
         component("drop_site",de.zalf.rpm.fbp.Sink.class);
         initialize("sim.json", component("sim_->_map"), port("IN"));
         initialize("crop.json", component("crop_->_map"), port("IN"));
@@ -98,8 +133,8 @@ public class ZmqTest extends Network {
         component("replace_ref_functions",de.zalf.rpm.fbp.ReplaceReferences.class);
         component("read_file",com.jpaulmorrison.fbp.core.components.io.ReadFile.class);
         component("concat_file",de.zalf.rpm.fbp.ConcatString.class);
-        component("json_->_map", JsonStringToPMapOrVec.class);
-        component("map_->_json", PMapOrVecToJsonString.class);
+        component("json_->_map", JsonStringToPColl.class);
+        component("map_->_json", ToJsonString.class);
         component("to_console",com.jpaulmorrison.fbp.core.components.misc.WriteToConsole.class);
         connect(component("read_file"), port("OUT"), component("concat_file"), port("IN"));
         connect(component("concat_file"), port("OUT"), component("json_->_map"), port("IN"));
@@ -111,13 +146,13 @@ public class ZmqTest extends Network {
 
     protected void defineSetValuesInMapTest() {
         component("decompose_into_words",com.jpaulmorrison.fbp.core.components.text.DeCompose.class);
-        component("JSON_string_to_Map", JsonStringToPMapOrVec.class);
+        component("JSON_string_to_Map", JsonStringToPColl.class);
         component("write_to__console",com.jpaulmorrison.fbp.core.components.misc.WriteToConsole.class);
-        component("set_values", SetValueInPMapOrVec.class);
+        component("set_values", SetValueInPColl.class);
         component("repeat",de.zalf.rpm.fbp.RepeatableStream.class);
-        component("Map_to__JSON_string", PMapOrVecToJsonString.class);
+        component("Map_to__JSON_string", ToJsonString.class);
         component("pass_and_trigger",de.zalf.rpm.fbp.PassThroughWithTrigger.class);
-        component("set_values_2", SetValueInPMapOrVec.class);
+        component("set_values_2", SetValueInPColl.class);
         component("decompose_into_words_2",com.jpaulmorrison.fbp.core.components.text.DeCompose.class);
         component("repeat_2",de.zalf.rpm.fbp.RepeatableStream.class);
         component("pass_and_trigger_2",de.zalf.rpm.fbp.PassThroughWithTrigger.class);
@@ -148,8 +183,8 @@ public class ZmqTest extends Network {
         component("concat file", de.zalf.rpm.fbp.ConcatString.class);
         component("read file", com.jpaulmorrison.fbp.core.components.io.ReadFile.class);
         component("print to console", com.jpaulmorrison.fbp.core.components.misc.WriteToConsole.class);
-        component("JSON String -> Map", JsonStringToPMapOrVec.class);
-        component("Map -> JSON String", PMapOrVecToJsonString.class);
+        component("JSON String -> Map", JsonStringToPColl.class);
+        component("Map -> JSON String", ToJsonString.class);
         initialize("sim.json", component("read file"), port("SOURCE"));
         connect(component("read file"), port("OUT"), component("concat file"), port("IN"));
         connect(component("concat file"), port("OUT"), component("JSON String -> Map"), port("IN"));

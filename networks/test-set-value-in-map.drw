@@ -5,24 +5,24 @@ xsi:noNamespaceSchemaLocation="https://github.com/jpaulm/drawfbp/blob/master/lib
 into words</description> <blockclassname>C:/Users/berg.ZALF-AD/ownCloud/zalf/fbp/javafbp-4.1.0.jar!com.jpaulmorrison.fbp.core.components.text.DeCompose</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 
 <block> <x> 462 </x> <y> 182 </y> <id> 34 </id> <type>B</type> <width>92</width> <height>64</height> <description>JSON string
-to Map</description> <blockclassname>C:\Users\berg.ZALF-AD\development\fbp\SimpleFBPFlow\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.JsonStringToPMapOrVec</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
+to Map</description> <blockclassname>C:\Users\berg.ZALF-AD\development\fbp\SimpleFBPFlow\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.JsonStringToPColl</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
 </block> 
 <block> <x> 1312 </x> <y> 382 </y> <id> 35 </id> <type>B</type> <width>92</width> <height>64</height> <description>write to 
 console</description> <blockclassname>C:/Users/berg.ZALF-AD/ownCloud/zalf/fbp/javafbp-4.1.0.jar!com.jpaulmorrison.fbp.core.components.misc.WriteToConsole</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 
-<block> <x> 781 </x> <y> 381 </y> <id> 5 </id> <type>B</type> <width>92</width> <height>64</height> <description>set values</description> <blockclassname>C:\Users\berg.ZALF-AD\development\fbp\SimpleFBPFlow\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.SetValueInPMapOrVec</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
+<block> <x> 781 </x> <y> 381 </y> <id> 5 </id> <type>B</type> <width>92</width> <height>64</height> <description>set values</description> <blockclassname>C:\Users\berg.ZALF-AD\development\fbp\SimpleFBPFlow\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.SetValueInPColl</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
 </block> 
 <block> <x> 472 </x> <y> 382 </y> <id> 39 </id> <type>B</type> <width>92</width> <height>64</height> <description>repeat</description> <blockclassname>C:\Users\berg.ZALF-AD\development\fbp\SimpleFBPFlow\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.RepeatableStream</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 
 <block> <x> 1062 </x> <y> 376 </y> <id> 9 </id> <type>B</type> <width>92</width> <height>64</height> <description>Map to 
-JSON string</description> <blockclassname>C:\Users\berg.ZALF-AD\development\fbp\SimpleFBPFlow\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.PMapOrVecToJsonString</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
+JSON string</description> <blockclassname>C:\Users\berg.ZALF-AD\development\fbp\SimpleFBPFlow\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.ToJsonString</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
 </block> 
 <block> <x> 656 </x> <y> 182 </y> <id> 42 </id> <type>B</type> <width>92</width> <height>64</height> <description>pass and
 trigger</description> <blockclassname>C:\Users\berg.ZALF-AD\development\fbp\SimpleFBPFlow\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.PassThroughWithTrigger</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 
 <block> <x> 101 </x> <y> 60 </y> <id> 11 </id> <type>I</type> <width>69</width> <height>18</height> <description>sim.json</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 
-<block> <x> 818 </x> <y> 703 </y> <id> 46 </id> <type>B</type> <width>92</width> <height>64</height> <description>set values 2</description> <blockclassname>C:\Users\berg.ZALF-AD\development\fbp\SimpleFBPFlow\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.SetValueInPMapOrVec</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
+<block> <x> 818 </x> <y> 703 </y> <id> 46 </id> <type>B</type> <width>92</width> <height>64</height> <description>set values 2</description> <blockclassname>C:\Users\berg.ZALF-AD\development\fbp\SimpleFBPFlow\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.SetValueInPColl</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet>
 </block> 
 <block> <x> 270 </x> <y> 703 </y> <id> 47 </id> <type>B</type> <width>92</width> <height>64</height> <description>decompose
 into words 2</description> <blockclassname>C:/Users/berg.ZALF-AD/ownCloud/zalf/fbp/javafbp-4.1.0.jar!com.jpaulmorrison.fbp.core.components.text.DeCompose</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 

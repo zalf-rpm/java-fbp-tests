@@ -1,0 +1,33 @@
+[{
+	"get-from": "sim.json",
+	"set-to": "env-template.json",
+	"mapping": [
+		["debug", "debugMode"],
+		["__all__", ["params", "simulationParameters"]],
+		[["output", "events"], "events"],
+		["output", "outputs"],
+		["climate.csv", "pathToClimateCSV"],
+		["climate.csv-options", "csvViaHeaderOptions"]
+	]
+},
+{
+	"get-from": "crop.json",
+	"set-to": "env-template.json",
+	"mapping": [
+		["CropParameters", "userCropParameters"],
+		["cropRotation", "cropRotation"],
+		["cropRotations", "cropRotations"]
+	]
+},
+{
+	"get-from": "site.json",
+	"set-to": "env-template.json",
+	"mapping": [
+		["EnvironmentParameters", "userEnvironmentParameters"],
+		["SoilMoistureParameters", "userSoilMoistureParameters"],
+		["SoilTemperatureParameters", "userSoilTemperatureParameters"],
+		["SoilTransportParameters", "userSoilTransportParameters"],
+		["SoilOrganicParameters", "userSoilOrganicParameters"],
+		["SiteParameters", "siteParameters"]
+	]
+}]

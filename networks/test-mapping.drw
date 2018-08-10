@@ -1,0 +1,57 @@
+<?xml version="1.0"?> 
+ <drawfbp_file xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:noNamespaceSchemaLocation="https://github.com/jpaulm/drawfbp/blob/master/lib/drawfbp_file.xsd"><net> <desc> </desc> <complang>Java</complang> <clicktogrid>true</clicktogrid> 
+<blocks><block> <x> 510 </x> <y> 93 </y> <id> 1 </id> <type>B</type> <width>92</width> <height>64</height> <description>read mapping</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.JsonFileToPColl</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 510 </x> <y> 205 </y> <id> 2 </id> <type>B</type> <width>92</width> <height>64</height> <description>List to IPs 1</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.ListToIPs</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 510 </x> <y> 316 </y> <id> 3 </id> <type>B</type> <width>92</width> <height>64</height> <description>split map</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.SplitMap</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 749 </x> <y> 416 </y> <id> 4 </id> <type>B</type> <width>92</width> <height>64</height> <description>List to IPs 2</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.ListToIPs</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 750 </x> <y> 539 </y> <id> 5 </id> <type>B</type> <width>92</width> <height>64</height> <description>split list</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.SplitList</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 863 </x> <y> 656 </y> <id> 6 </id> <type>B</type> <width>92</width> <height>64</height> <description>to SS 1</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.ToSubstream</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 653 </x> <y> 656 </y> <id> 7 </id> <type>B</type> <width>92</width> <height>64</height> <description>to SS 2</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.ToSubstream</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 1204 </x> <y> 938 </y> <id> 12 </id> <type>B</type> <width>92</width> <height>64</height> <description>to console 3</description> <blockclassname>C:/Users/berg.ZALF-AD/ownCloud/zalf/fbp/javafbp-4.1.0.jar!com.jpaulmorrison.fbp.core.components.misc.WriteToConsole</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 886 </x> <y> 544 </y> <id> 14 </id> <type>I</type> <width>27</width> <height>18</height> <description>0,1</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 664 </x> <y> 314 </y> <id> 15 </id> <type>I</type> <width>145</width> <height>18</height> <description>get-from, mapping</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 505 </x> <y> 23 </y> <id> 16 </id> <type>I</type> <width>103</width> <height>18</height> <description>mapping.json</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 1204 </x> <y> 806 </y> <id> 19 </id> <type>B</type> <width>92</width> <height>64</height> <description>to string 2</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.ToJsonString</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 536 </x> <y> 790 </y> <id> 21 </id> <type>B</type> <width>92</width> <height>64</height> <description>get value</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.GetValueFromColl</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 503 </x> <y> 493 </y> <id> 24 </id> <type>B</type> <width>92</width> <height>64</height> <description>read files</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.JsonFileToPColl</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 1019 </x> <y> 806 </y> <id> 25 </id> <type>B</type> <width>92</width> <height>64</height> <description>set value</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.SetValueInPColl</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 1019 </x> <y> 567 </y> <id> 26 </id> <type>B</type> <width>92</width> <height>64</height> <description>read template</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.JsonFileToPColl</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 1019 </x> <y> 445 </y> <id> 27 </id> <type>I</type> <width>111</width> <height>18</height> <description>template.json</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+</blocks> <connections>
+<connection> <fromx>1020</fromx> <fromy>451</fromy> <tox>1020</tox> <toy>535</toy> <fromid>27</fromid> <toid>26</toid> <id>32</id> <endsatline>false</endsatline><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>509</fromx> <fromy>125</fromy> <tox>507</tox> <toy>174</toy> <fromid>1</fromid> <toid>2</toid> <id>1</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>1018</fromx> <fromy>599</fromy> <tox>1018</tox> <toy>775</toy> <fromid>26</fromid> <toid>25</toid> <id>33</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>COLL</downstreamport></connection> 
+<connection> <fromx>510</fromx> <fromy>237</fromy> <tox>512</tox> <toy>284</toy> <fromid>2</fromid> <toid>3</toid> <id>2</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>582</fromx> <fromy>810</fromy> <tox>972</tox> <toy>810</toy> <fromid>21</fromid> <toid>25</toid> <id>34</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>VALUE</downstreamport></connection> 
+<connection> <fromx>881</fromx> <fromy>688</fromy> <tox>972</tox> <toy>783</toy> <fromid>6</fromid> <toid>25</toid> <id>35</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>PATH</downstreamport></connection> 
+<connection> <fromx>536</fromx> <fromy>348</fromy> <tox>746</tox> <toy>382</toy> <fromid>3</fromid> <toid>4</toid> <id>4</id> <endsatline>false</endsatline><upstreamport>OUT[1]</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>1065</fromx> <fromy>808</fromy> <tox>1157</tox> <toy>808</toy> <fromid>25</fromid> <toid>19</toid> <id>37</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>749</fromx> <fromy>448</fromy> <tox>750</tox> <toy>507</toy> <fromid>4</fromid> <toid>5</toid> <id>6</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>721</fromx> <fromy>571</fromy> <tox>661</tox> <toy>623</toy> <fromid>5</fromid> <toid>7</toid> <id>8</id> <endsatline>false</endsatline><upstreamport>OUT[0]</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>770</fromx> <fromy>571</fromy> <tox>853</tox> <toy>623</toy> <fromid>5</fromid> <toid>6</toid> <id>9</id> <endsatline>false</endsatline><upstreamport>OUT[1]</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>874</fromx> <fromy>544</fromy> <tox>796</tox> <toy>538</toy> <fromid>14</fromid> <toid>5</toid> <id>16</id> <endsatline>false</endsatline><downstreamport>SEL</downstreamport></connection> 
+<connection> <fromx>593</fromx> <fromy>315</fromy> <tox>556</tox> <toy>317</toy> <fromid>15</fromid> <toid>3</toid> <id>17</id> <endsatline>false</endsatline><downstreamport>SEL</downstreamport></connection> 
+<connection> <fromx>508</fromx> <fromy>30</fromy> <tox>510</tox> <toy>61</toy> <fromid>16</fromid> <toid>1</toid> <id>18</id> <endsatline>false</endsatline><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>1206</fromx> <fromy>838</fromy> <tox>1198</tox> <toy>910</toy> <fromid>19</fromid> <toid>12</toid> <id>22</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>501</fromx> <fromy>348</fromy> <tox>498</tox> <toy>460</toy> <fromid>3</fromid> <toid>24</toid> <id>27</id> <endsatline>false</endsatline><upstreamport>OUT[0]</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>495</fromx> <fromy>525</fromy> <tox>495</tox> <toy>759</toy> <fromid>24</fromid> <toid>21</toid> <id>29</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>624</fromx> <fromy>688</fromy> <tox>556</tox> <toy>759</toy> <fromid>7</fromid> <toid>21</toid> <id>30</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>PATH</downstreamport></connection> 
+</connections> </net> </drawfbp_file>

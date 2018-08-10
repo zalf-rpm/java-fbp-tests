@@ -14,8 +14,8 @@ import org.pcollections.TreePVector;
 
 @ComponentDescription("Create a PMap or PVector depending on the contents of the JSON file")
 @InPort(value = "IN", description = "Path to JSON file", type = String.class)
-@OutPort(value = "OUT", description = "PMap or PVector representation of JSON file content")
-public class JsonFileToPMapOrVec extends Component {
+@OutPort(value = "OUT", description = "PMap<String, Object> or PVector<Object>")
+public class JsonFileToPColl extends Component {
     InputPort inPort;
     OutputPort outPort;
 
