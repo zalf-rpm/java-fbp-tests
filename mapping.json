@@ -2,7 +2,7 @@
 	"get-from": "sim.json",
 	"set-to": "env-template.json",
 	"mapping": [
-		["debug", "debugMode"],
+		["debug?", "debugMode"],
 		["__all__", ["params", "simulationParameters"]],
 		[["output", "events"], "events"],
 		["output", "outputs"],

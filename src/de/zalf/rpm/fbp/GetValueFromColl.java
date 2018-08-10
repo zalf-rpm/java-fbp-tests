@@ -89,14 +89,20 @@ public class GetValueFromColl extends Component {
         }
 
         Object o  = origIn;
+        boolean result = false;
         PVector prevPath = Empty.vector();
         for(Object k : path) {
             if(k instanceof Integer){
                 int key = (Integer)k;
                 if(List.class.isAssignableFrom(o.getClass())){
                     List l = (List)o;
-                    if(key < l.size())
+                    if(key > 0 && key < l.size()) {
                         o = l.get(key);
+                        result = true;
+                    } else if(key == -1){
+                        o = origIn;
+                        result = true;
+                    }
                     else if(errorPort.isConnected()) {
                         errorPort.send(create("Path [" + prevPath.plus(k) + "] doesn't designate a valid index. Waiting for next IP.!"));
                         return;
@@ -109,8 +115,13 @@ public class GetValueFromColl extends Component {
                 String key = (String)k;
                 if(Map.class.isAssignableFrom(o.getClass())){
                     Map m = (Map)o;
-                    if(m.containsKey(key))
+                    if(m.containsKey(key)) {
                         o = m.get(key);
+                        result = true;
+                    } else if(key == "__all__"){
+                        o = origIn;
+                        result = true;
+                    }
                     else if(errorPort.isConnected()) {
                         errorPort.send(create("Path [" + prevPath.plus(k) + "] doesn't designate a valid key in MAP. Waiting for next IP.!"));
                         return;
@@ -131,7 +142,7 @@ public class GetValueFromColl extends Component {
             sendInOpenBracket = false;
         }
 
-        outPort.send(create(o));
+        outPort.send(create(result ? o : ""));
         if(passPort.isConnected())
             passPort.send(create(origIn));
 

@@ -9,6 +9,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.pcollections.HashPMap;
 import org.pcollections.TreePVector;
 
@@ -30,8 +33,12 @@ public class JsonFileToPColl extends Component {
 
             try {
                 BufferedReader br = new BufferedReader(new FileReader(s));
-                br.mark(1);
-                char c = (char)br.read();
+                br.mark(200);
+                char c = ' ';
+                for(int i = 0; i < 200; i++) {
+                    if(!Character.isWhitespace(c = (char)br.read()))
+                        break;
+                }
                 br.reset();
 
                 Object o;

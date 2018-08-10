@@ -2,20 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0deb8a40-94ea-4a65-b9fc-fafa4bdb5775" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/SplitList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/SplitMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/ToSubstream.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/networks/test-get-value.drw" beforeDir="false" afterPath="$PROJECT_DIR$/networks/test-get-value.drw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/networks/test-replace-reference-function-component.drw" beforeDir="false" afterPath="$PROJECT_DIR$/networks/test-replace-reference-function-component.drw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/networks/test-replace-references-2.drw" beforeDir="false" afterPath="$PROJECT_DIR$/networks/test-replace-references-2.drw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/networks/test-set-value-in-map.drw" beforeDir="false" afterPath="$PROJECT_DIR$/networks/test-set-value-in-map.drw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/networks/test-set-value.drw" beforeDir="false" afterPath="$PROJECT_DIR$/networks/test-set-value.drw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/GetValueFromPMapOrVec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/GetValueFromColl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/JsonFileToPMapOrVec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/JsonFileToPColl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/JsonStringToPMapOrVec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/JsonStringToPColl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/PMapOrVecToJsonString.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/ToJsonString.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/SetValueInPMapOrVec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/SetValueInPColl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapping.json" beforeDir="false" afterPath="$PROJECT_DIR$/mapping.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/networks/test-mapping.drw" beforeDir="false" afterPath="$PROJECT_DIR$/networks/test-mapping.drw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/GetValueFromColl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/GetValueFromColl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/JsonFileToPColl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/JsonFileToPColl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/SetValueInPColl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/SetValueInPColl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/ZmqTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/ZmqTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -76,23 +68,23 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="16788" />
+          <entry key="java" value="20022" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="16788" />
+          <entry key="JAVA" value="20022" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="48" />
+          <entry key="class" value="49" />
           <entry key="java" value="35" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="48" />
+          <entry key="CLASS" value="49" />
           <entry key="JAVA" value="35" />
         </counts>
       </usages-collector>
@@ -103,8 +95,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/SetValueInPColl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="60" column="67" lean-forward="true" selection-start-line="60" selection-start-column="67" selection-end-line="60" selection-end-column="67" />
+            <state relative-caret-position="386">
+              <caret line="155" column="38" selection-start-line="155" selection-start-column="38" selection-end-line="155" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -112,11 +104,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/JsonFileToPColl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="397">
-              <caret line="34" column="27" lean-forward="true" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
+            <state relative-caret-position="261">
+              <caret line="40" column="17" lean-forward="true" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -151,7 +143,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/ZmqTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
+            <state relative-caret-position="164">
               <caret line="33" column="24" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
             </state>
           </provider>
@@ -160,8 +152,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/SplitList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+            <state relative-caret-position="204">
+              <caret line="45" selection-start-line="45" selection-end-line="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -190,11 +182,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/GetValueFromColl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="61" column="16" selection-start-line="61" selection-start-column="16" selection-end-line="61" selection-end-column="16" />
+            <state relative-caret-position="279">
+              <caret line="66" column="11" selection-start-line="66" selection-start-column="11" selection-end-line="66" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -263,16 +255,16 @@
         <option value="$PROJECT_DIR$/src/de/zalf/rpm/fbp/GetValueFromPMapOrVec.java" />
         <option value="$PROJECT_DIR$/src/de/zalf/rpm/fbp/SetValueInPMapOrVec.java" />
         <option value="$PROJECT_DIR$/src/de/zalf/rpm/fbp/JsonFileToPMapOrVec.java" />
-        <option value="$PROJECT_DIR$/src/de/zalf/rpm/fbp/JsonFileToPColl.java" />
         <option value="$PROJECT_DIR$/src/de/zalf/rpm/fbp/JsonStringToPMapOrVec.java" />
         <option value="$PROJECT_DIR$/src/de/zalf/rpm/fbp/JsonStringToPColl.java" />
         <option value="$PROJECT_DIR$/src/de/zalf/rpm/fbp/PMapOrVecToJsonString.java" />
         <option value="$PROJECT_DIR$/src/de/zalf/rpm/fbp/ToJsonString.java" />
         <option value="$PROJECT_DIR$/src/de/zalf/rpm/fbp/SplitMap.java" />
         <option value="$PROJECT_DIR$/src/de/zalf/rpm/fbp/SplitList.java" />
-        <option value="$PROJECT_DIR$/src/de/zalf/rpm/fbp/SetValueInPColl.java" />
         <option value="$PROJECT_DIR$/src/de/zalf/rpm/fbp/ZmqTest.java" />
+        <option value="$PROJECT_DIR$/src/de/zalf/rpm/fbp/SetValueInPColl.java" />
         <option value="$PROJECT_DIR$/src/de/zalf/rpm/fbp/GetValueFromColl.java" />
+        <option value="$PROJECT_DIR$/src/de/zalf/rpm/fbp/JsonFileToPColl.java" />
       </list>
     </option>
   </component>
@@ -438,7 +430,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32917467" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.26487523" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" visible="true" weight="0.39731285" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" visible="true" weight="0.44433782" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -455,6 +447,30 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/GetValueFromColl.java</url>
+          <line>117</line>
+          <properties />
+          <option name="timeStamp" value="45" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/GetValueFromColl.java</url>
+          <line>98</line>
+          <properties />
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/JsonFileToPColl.java</url>
+          <line>30</line>
+          <properties />
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://$PROJECT_DIR$/lib/javafbp-4.1.0.jar!/com/jpaulmorrison/fbp/core/engine/SubNet.class">
@@ -768,17 +784,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/javafbp-4.1.0.jar!/com/jpaulmorrison/fbp/core/engine/Component.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1419">
-          <caret line="616" column="19" selection-start-line="616" selection-start-column="19" selection-end-line="616" selection-end-column="19" />
-          <folding>
-            <element signature="e#20731#20732#0" expanded="true" />
-            <element signature="e#20783#20784#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/ToSubstream.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -816,10 +821,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/ZmqTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="33" column="24" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/SplitList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+        <state relative-caret-position="204">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/javafbp-4.1.0.jar!/com/jpaulmorrison/fbp/core/engine/Component.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="803" selection-start-line="803" selection-end-line="803" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/SetValueInPColl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="155" column="38" selection-start-line="155" selection-start-column="38" selection-end-line="155" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/GetValueFromColl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="66" column="11" selection-start-line="66" selection-start-column="11" selection-end-line="66" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -828,35 +867,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/JsonFileToPColl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="34" column="27" lean-forward="true" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/SetValueInPColl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="60" column="67" lean-forward="true" selection-start-line="60" selection-start-column="67" selection-end-line="60" selection-end-column="67" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/ZmqTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="33" column="24" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/GetValueFromColl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="61" column="16" selection-start-line="61" selection-start-column="16" selection-end-line="61" selection-end-column="16" />
+        <state relative-caret-position="261">
+          <caret line="40" column="17" lean-forward="true" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

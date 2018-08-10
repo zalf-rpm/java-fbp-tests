@@ -18,37 +18,53 @@ import org.pcollections.*;
         @OutPort(value = "ERROR", description = "Error message", type = String.class, optional = true)
 })
 public class SetValueInPColl extends Component {
-    InputPort valuePort;
-    InputPort pathPort;
-    InputPort collPort;
+    private InputPort valuePort;
+    private InputPort pathPort;
+    private InputPort collPort;
     OutputPort outPort;
-    OutputPort errorPort;
+    private OutputPort errorPort;
 
-    PVector path;
-    int pathLevel = 0;
+    private PVector path;
+    private boolean receiveNextPath = true;
+    private boolean pathEarlyClose = false;
+    private int pathLevel = 0;
 
-    Object coll;
-    int collLevel = 0;
-    int sendCollOpenBrackets = 0;
+    private Object coll;
+    private boolean receiveNextColl = true;
 
     Object value;
-    int valueLevel = 0;
+    private boolean receiveNextValue = true;
+    private boolean valueEarlyClose = false;
+    private int valueLevel = 0;
 
-    private boolean tryReceivingPath(){
-        if(path == null || pathLevel >= collLevel) {
+
+    private void tryReceivingPath(){
+        //allow receives only if a new path is requested and we're still at the same or a higher
+        //substream level
+        if(receiveNextPath && !pathEarlyClose) {
             Packet pp;
             while((pp = pathPort.receive()) != null) {
                 if(pp.getType() == Packet.OPEN){
                     pathLevel++;
-                    //sendCollOpenBrackets++;
                     drop(pp);
                 } else if(pp.getType() == Packet.CLOSE){
                     pathLevel--;
-                    //if(sendCollOpenBrackets > 0) {
-                    //    outPort.send(create(Packet.CLOSE, ""));
-                    //    sendCollOpenBrackets--;
-                    //}
                     drop(pp);
+                    // if the levels are equal again at this point, this means that
+                    // the valuePort already received a CLOSE bracket, so we can send
+                    // the updated COLL
+                    // else we allow the valuePort to keep on receiving values within
+                    // the same substream, but always update the same path, which will
+                    // effectively overwrite the previous update
+                    // (if both substreams have different lengths)
+                    if(pathLevel == valueLevel) {
+                        outPort.send(create(coll));
+                        receiveNextColl = true;
+                        valueEarlyClose = false;
+                    } else {
+                        receiveNextPath = false;
+                        pathEarlyClose = true;
+                    }
                 } else
                     break;
             }
@@ -60,21 +76,22 @@ public class SetValueInPColl extends Component {
                 else
                     path = TreePVector.from((List)pp.getContent());
                 drop(pp);
-                return true;
+                receiveNextPath = false;
             }
         }
-        return false;
     }
 
-    private boolean tryReceivingColl(){
-        if(coll == null || (collLevel >= pathLevel && collLevel >= valueLevel)) {
+    private void tryReceivingColl(){
+        if(receiveNextColl) {
             Packet cp;
             while((cp = collPort.receive()) != null) {
                 if (cp.getType() == Packet.OPEN) {
-                    collLevel++;
+                    if (errorPort.isConnected())
+                        errorPort.send(create("(Open)-Brackets have no semantics for COLL port! Ignoring open bracket."));
                     drop(cp);
                 } else if (cp.getType() == Packet.CLOSE) {
-                    collLevel--;
+                    if (errorPort.isConnected())
+                        errorPort.send(create("(Close)-Brackets have no semantics for COLL port! Ignoring close bracket."));
                     drop(cp);
                 } else
                     break;
@@ -83,14 +100,15 @@ public class SetValueInPColl extends Component {
             if(cp != null) {
                 coll = cp.getContent();
                 drop(cp);
-                return true;
+                receiveNextColl = false;
             }
         }
-        return false;
     }
 
-    private boolean tryReceivingValue(){
-        if(value == null || (valueLevel >= pathLevel && valueLevel >= collLevel)) {
+    private void tryReceivingValue(){
+        //allow receives only if a new value is requested and we're still at the same or a higher
+        //substream level
+        if(receiveNextValue && !valueEarlyClose) {
             Packet vp;
             while((vp = valuePort.receive()) != null) {
                 if (vp.getType() == Packet.OPEN) {
@@ -99,6 +117,20 @@ public class SetValueInPColl extends Component {
                 } else if (vp.getType() == Packet.CLOSE) {
                     valueLevel--;
                     drop(vp);
+                    // if the levels are equal again at this point, this means that
+                    // the pathPort already received a CLOSE bracket, so we can send
+                    // the updated COLL
+                    // else we allow the pathPort to keep on receiving paths within
+                    // the same substream, but always update the same value on a different path
+                    // (if both substreams have different lengths)
+                    if(valueLevel == pathLevel) {
+                        outPort.send(create(coll));
+                        receiveNextColl = true;
+                        pathEarlyClose = false;
+                    } else {
+                        receiveNextValue = false;
+                        valueEarlyClose = true;
+                    }
                 } else
                     break;
             }
@@ -106,28 +138,32 @@ public class SetValueInPColl extends Component {
             if(vp != null) {
                 value = vp.getContent();
                 drop(vp);
-                return true;
+                receiveNextValue = false;
             }
         }
-        return false;
     }
 
     @Override
     protected void execute() {
-        boolean someDataReceived = tryReceivingPath() || tryReceivingColl() || tryReceivingValue();
+        tryReceivingPath();
+        tryReceivingColl();
+        tryReceivingValue();
 
-        if(!someDataReceived || path == null || coll == null || value == null)
+        //if fields aren't yet initialized we can't continue
+        if(path == null || coll == null || value == null)
             return;
 
-        Object o;
+        //to continue all values have to be in synch = path fits to value and there's a coll, then the map can be updated
+        if(receiveNextPath || receiveNextColl || receiveNextValue)
+            return;
+
         if(PMap.class.isAssignableFrom(coll.getClass()))
-            o = updateIn((PMap<String, Object>)coll, path, value, Empty.vector());
+            coll = updateIn((PMap<String, Object>)coll, path, value, Empty.vector());
         else if(PVector.class.isAssignableFrom(coll.getClass()))
-            o = updateIn((PVector)coll, path, value, Empty.vector());
-        else
-            return;
+            coll = updateIn((PVector)coll, path, value, Empty.vector());
 
-        outPort.send(create(o));
+        //update path and value
+        receiveNextPath = receiveNextValue = true;
     }
 
     //update in function for maps

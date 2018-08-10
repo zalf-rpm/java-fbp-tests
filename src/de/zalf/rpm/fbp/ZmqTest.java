@@ -40,7 +40,7 @@ public class ZmqTest extends Network {
         connect(component("split_map"), port("OUT[1]"), component("List_to_IPs_2"), port("IN"));
         connect(component("set_value"), port("OUT"), component("to_string_2"), port("IN"));
         connect(component("List_to_IPs_2"), port("OUT"), component("split_list"), port("IN"));
-        connect(component("split_list"), port("OUT[0]"), component("to_SS_2"), port("IN"));
+        connect(component("split_list"), port("OUT[0]"), component("to_SS_2"), port("IN"), 2);
         connect(component("split_list"), port("OUT[1]"), component("to_SS_1"), port("IN"));
         initialize("0,1", component("split_list"), port("SEL"));
         initialize("get-from, mapping", component("split_map"), port("SEL"));
