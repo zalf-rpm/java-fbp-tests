@@ -7,17 +7,17 @@ xsi:noNamespaceSchemaLocation="https://github.com/jpaulm/drawfbp/blob/master/lib
 </block> 
 <block> <x> 707 </x> <y> 433 </y> <id> 4 </id> <type>B</type> <width>92</width> <height>64</height> <description>List to IPs 2</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.ListToIPs</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 
-<block> <x> 708 </x> <y> 556 </y> <id> 5 </id> <type>B</type> <width>92</width> <height>64</height> <description>split list</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.SplitList</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
-</block> 
 <block> <x> 87 </x> <y> 221 </y> <id> 37 </id> <type>C</type> <width>36</width> <height>28</height> <description>MAPPING</description> <substreamsensitive>false</substreamsensitive><multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 708 </x> <y> 556 </y> <id> 5 </id> <type>B</type> <width>92</width> <height>64</height> <description>split list</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.SplitList</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 
 <block> <x> 278 </x> <y> 872 </y> <id> 38 </id> <type>C</type> <width>36</width> <height>28</height> <description>TEMPLATE</description> <substreamsensitive>false</substreamsensitive><multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 
 <block> <x> 1045 </x> <y> 853 </y> <id> 39 </id> <type>D</type> <width>36</width> <height>28</height> <description>OUT</description> <substreamsensitive>false</substreamsensitive><multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 
-<block> <x> 844 </x> <y> 561 </y> <id> 14 </id> <type>I</type> <width>27</width> <height>18</height> <description>0,1</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+<block> <x> 844 </x> <y> 561 </y> <id> 14 </id> <type>I</type> <width>21</width> <height>18</height> <description>0,1</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 
-<block> <x> 661 </x> <y> 337 </y> <id> 15 </id> <type>I</type> <width>145</width> <height>18</height> <description>get-from, mapping</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+<block> <x> 661 </x> <y> 337 </y> <id> 15 </id> <type>I</type> <width>116</width> <height>18</height> <description>get-from, mapping</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 
 <block> <x> 484 </x> <y> 668 </y> <id> 21 </id> <type>B</type> <width>92</width> <height>64</height> <description>get value</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.GetValueFromColl</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 
@@ -25,7 +25,7 @@ xsi:noNamespaceSchemaLocation="https://github.com/jpaulm/drawfbp/blob/master/lib
 </block> 
 <block> <x> 839 </x> <y> 853 </y> <id> 25 </id> <type>B</type> <width>92</width> <height>64</height> <description>set value</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.SetValueInPColl</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 
-<block> <x> 834 </x> <y> 431 </y> <id> 28 </id> <type>I</type> <width>19</width> <height>18</height> <description>0</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+<block> <x> 834 </x> <y> 431 </y> <id> 28 </id> <type>I</type> <width>14</width> <height>18</height> <description>0</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 
 <block> <x> 841 </x> <y> 692 </y> <id> 30 </id> <type>B</type> <width>92</width> <height>64</height> <description>flatten paths</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.JoinSubstreams</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 

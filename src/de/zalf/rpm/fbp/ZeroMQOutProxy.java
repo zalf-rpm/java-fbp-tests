@@ -3,31 +3,22 @@ package de.zalf.rpm.fbp;
 import com.jpaulmorrison.fbp.core.engine.*;
 import org.zeromq.ZMQ;
 
-@ComponentDescription("")
+@ComponentDescription("Sends message via ZeroMQ")
 @InPorts({
         @InPort(value = "IN", description = "IPs to be sent via ZeroMQ", type = String.class),
-        @InPort(value = "ZMQ-ADDRESS", description = "TCP address of ZMQ socket", type = String.class)})
-@OutPort(value = "OUT", description = "passthrough", type = String.class, optional = true)
+        @InPort(value = "ADDRESS", description = "TCP address of ZMQ socket", type = String.class)})
+@OutPort(value = "OUT", description = "pass through", type = String.class, optional = true)
 public class ZeroMQOutProxy extends Component {
+    private InputPort inPort;
+    private InputPort addressPort;
+    private OutputPort outPort;
 
-    InputPort inport;
-    InputPort addressPort;
-    OutputPort outport;
+    private ZMQ.Context ctx;
+    private ZMQ.Socket pushSocket;
 
-    ZMQ.Context ctx;
-    ZMQ.Socket pushSocket;
-
-    public ZeroMQOutProxy()
-    {
+    public ZeroMQOutProxy() {
         ctx = ZMQ.context(1);
         pushSocket = ctx.socket(ZMQ.PUSH);
-    }
-
-    @Override
-    protected void openPorts() {
-        inport = openInput("IN");
-        addressPort = openInput("ZMQ-ADDRESS");
-        outport = openOutput("OUT");
     }
 
     @Override
@@ -46,21 +37,31 @@ public class ZeroMQOutProxy extends Component {
             drop(ap);
         }
 
-        Packet msgp = inport.receive();
-        if(msgp == null)
+        Packet ip = inPort.receive();
+        if(ip == null)
             return;
-        //inPort.close()
 
-        String msg = (String)msgp.getContent();
+        String msg = (String)ip.getContent();
         pushSocket.send(msg);
-        System.out.println("sent msg");
+        //System.out.println("sent msg");
 
-        if(outport.isConnected())
-            outport.send(msgp);
+        if(outPort.isConnected())
+            outPort.send(ip);
         else
-            drop(msgp);
+            drop(ip);
 
-        //Thread.sleep(50);
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void openPorts() {
+        inPort = openInput("IN");
+        addressPort = openInput("ADDRESS");
+        outPort = openOutput("OUT");
     }
 }
 

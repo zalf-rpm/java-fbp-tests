@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0deb8a40-94ea-4a65-b9fc-fafa4bdb5775" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/JoinSubstreams.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapping.json" beforeDir="false" afterPath="$PROJECT_DIR$/mapping.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/networks/create-env-test-subnet.drw" beforeDir="false" afterPath="$PROJECT_DIR$/networks/create-env-test-subnet.drw" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/networks/test-mapping.drw" beforeDir="false" afterPath="$PROJECT_DIR$/networks/test-mapping.drw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/GetValueFromColl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/GetValueFromColl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/ListToIPs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/ListToIPs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/ReplaceReferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/ReplaceReferences.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/SetValueInPColl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/SetValueInPColl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/SplitList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/SplitList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/ZeroMQOutProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/ZeroMQOutProxy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/ZmqTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/zalf/rpm/fbp/ZmqTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -71,24 +66,24 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="20757" />
+          <entry key="java" value="20900" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="20757" />
+          <entry key="JAVA" value="20900" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="57" />
-          <entry key="java" value="40" />
+          <entry key="java" value="43" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="57" />
-          <entry key="JAVA" value="40" />
+          <entry key="JAVA" value="43" />
         </counts>
       </usages-collector>
     </session>
@@ -108,43 +103,31 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/javafbp-4.1.0.jar!/com/jpaulmorrison/fbp/core/engine/Component.class">
+        <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/ZmqTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="803" selection-start-line="803" selection-end-line="803" />
+            <state relative-caret-position="159">
+              <caret line="41" column="63" selection-start-line="41" selection-start-column="63" selection-end-line="41" selection-end-column="63" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/ZmqTest.java">
+        <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/GetValueFromColl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="394">
-              <caret line="41" column="36" lean-forward="true" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="36" />
+            <state relative-caret-position="463">
+              <caret line="149" selection-start-line="149" selection-end-line="149" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/GetValueFromColl.java">
+        <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/ZeroMQOutProxy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="149" column="46" lean-forward="true" selection-start-line="149" selection-start-column="46" selection-end-line="149" selection-end-column="46" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/SplitList.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="64" column="25" lean-forward="true" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="382">
+              <caret line="53" column="28" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -170,7 +153,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/ListToIPs.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
+            <state relative-caret-position="374">
               <caret line="22" selection-start-line="22" selection-end-line="22" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -180,19 +163,25 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_162/src.zip!/java/lang/Object.java">
+        <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/SplitMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="381" column="29" selection-start-line="381" selection-start-column="29" selection-end-line="381" selection-end-column="29" />
+            <state relative-caret-position="776">
+              <caret line="50" selection-start-line="50" selection-end-line="50" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/javafbp-4.1.0.jar!/com/jpaulmorrison/fbp/core/components/routing/ConcatStreams.class">
+        <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/ReplaceReferences.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="170">
+              <caret line="16" column="85" selection-start-line="16" selection-start-column="85" selection-end-line="16" selection-end-column="85" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -232,7 +221,6 @@
         <option value="$PROJECT_DIR$/src/de/zalf/rpm/fbp/ZeroMQProxy.java" />
         <option value="$PROJECT_DIR$/src/de/zalf/rpm/fbp/ReadJsonFile.java" />
         <option value="$PROJECT_DIR$/src/de/zalf/rpm/fbp/RepeatableSplitString.java" />
-        <option value="$PROJECT_DIR$/src/de/zalf/rpm/fbp/ZeroMQOutProxy.java" />
         <option value="$PROJECT_DIR$/src/de/zalf/rpm/fbp/PassthroughWithKick.java" />
         <option value="$PROJECT_DIR$/src/de/zalf/rpm/monica/io/ReplaceReferences.java" />
         <option value="$PROJECT_DIR$/src/de/zalf/rpm/fbp/ReplaceReferences.java" />
@@ -266,9 +254,10 @@
         <option value="$PROJECT_DIR$/src/de/zalf/rpm/fbp/ListToIPs.java" />
         <option value="$PROJECT_DIR$/src/de/zalf/rpm/fbp/SplitList.java" />
         <option value="$PROJECT_DIR$/src/de/zalf/rpm/fbp/JoinSubstreams.java" />
-        <option value="$PROJECT_DIR$/src/de/zalf/rpm/fbp/ZmqTest.java" />
         <option value="$PROJECT_DIR$/src/de/zalf/rpm/fbp/SetValueInPColl.java" />
         <option value="$PROJECT_DIR$/src/de/zalf/rpm/fbp/GetValueFromColl.java" />
+        <option value="$PROJECT_DIR$/src/de/zalf/rpm/fbp/ZmqTest.java" />
+        <option value="$PROJECT_DIR$/src/de/zalf/rpm/fbp/ZeroMQOutProxy.java" />
       </list>
     </option>
   </component>
@@ -399,8 +388,8 @@
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32917467" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32821497" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" weight="0.48272553" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.42994243" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" weight="0.44241843" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -422,10 +411,10 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/GetValueFromColl.java</url>
-          <line>149</line>
+          <url>file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/ZeroMQOutProxy.java</url>
+          <line>26</line>
           <properties />
-          <option name="timeStamp" value="61" />
+          <option name="timeStamp" value="62" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -436,13 +425,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$PROJECT_DIR$/lib/javafbp-4.1.0.jar!/com/jpaulmorrison/fbp/resourcekit/examples/networks/TestNestedSubstreams.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/lib/javafbp-4.1.0.jar!/com/jpaulmorrison/fbp/resourcekit/examples/networks/Update.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -489,16 +471,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="533">
           <caret line="49" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/ReplaceReferences.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-92">
-          <caret line="16" column="85" selection-start-line="16" selection-start-column="85" selection-end-line="16" selection-end-column="85" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -701,16 +673,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/SplitMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="50" selection-start-line="50" selection-end-line="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/JsonFileToPColl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
@@ -787,16 +749,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/ListToIPs.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/JoinSubstreams.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
@@ -811,13 +763,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/ZmqTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="41" column="36" lean-forward="true" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/SetValueInPColl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="416">
@@ -828,13 +773,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/GetValueFromColl.java">
+    <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/ListToIPs.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="149" column="46" lean-forward="true" selection-start-line="149" selection-start-column="46" selection-end-line="149" selection-end-column="46" />
+        <state relative-caret-position="374">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/SplitMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="776">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/ReplaceReferences.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="16" column="85" selection-start-line="16" selection-start-column="85" selection-end-line="16" selection-end-column="85" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/GetValueFromColl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="463">
+          <caret line="149" selection-start-line="149" selection-end-line="149" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/ZmqTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="41" column="63" selection-start-line="41" selection-start-column="63" selection-end-line="41" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/zalf/rpm/fbp/ZeroMQOutProxy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="53" column="28" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="28" />
         </state>
       </provider>
     </entry>

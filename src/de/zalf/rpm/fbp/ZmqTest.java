@@ -14,7 +14,48 @@ public class ZmqTest extends Network {
         //defineCreateEnvSubnetTest();
         //defineGetValueTest();
         //defineSetValueTest();
-        defineMappingTest();
+        //defineMappingTest();
+        defineCreateEnvTest();
+    }
+
+    protected void defineCreateEnvTest(){
+        component("read_mapping",de.zalf.rpm.fbp.JsonFileToPColl.class);
+        component("List_to_IPs_1",de.zalf.rpm.fbp.ListToIPs.class);
+        component("split_map",de.zalf.rpm.fbp.SplitMap.class);
+        component("List_to_IPs_2",de.zalf.rpm.fbp.ListToIPs.class);
+        component("split_list",de.zalf.rpm.fbp.SplitList.class);
+        component("to_console_3",com.jpaulmorrison.fbp.core.components.misc.WriteToConsole.class);
+        component("to_string_2",de.zalf.rpm.fbp.ToJsonString.class);
+        component("replace_references",de.zalf.rpm.fbp.ReplaceReferences.class);
+        component("get_value",de.zalf.rpm.fbp.GetValueFromColl.class);
+        component("ZMQ_send",de.zalf.rpm.fbp.ZeroMQOutProxy.class);
+        component("read_files",de.zalf.rpm.fbp.JsonFileToPColl.class);
+        component("set_value",de.zalf.rpm.fbp.SetValueInPColl.class);
+        component("read_template",de.zalf.rpm.fbp.JsonFileToPColl.class);
+        component("flatten_paths",de.zalf.rpm.fbp.JoinSubstreams.class);
+        component("flatten_values",de.zalf.rpm.fbp.JoinSubstreams.class);
+        initialize("env-template.json", component("read_template"), port("IN"));
+        connect(component("read_mapping"), port("OUT"), component("List_to_IPs_1"), port("IN"));
+        connect(component("read_template"), port("OUT"), component("set_value"), port("COLL"));
+        connect(component("List_to_IPs_1"), port("OUT"), component("split_map"), port("IN"));
+        connect(component("split_map"), port("OUT[1]"), component("List_to_IPs_2"), port("IN"));
+        connect(component("set_value"), port("OUT"), component("to_string_2"), port("IN"));
+        connect(component("List_to_IPs_2"), port("OUT"), component("split_list"), port("IN"));
+        initialize("0", component("List_to_IPs_2"), port("SSL"));
+        connect(component("split_list"), port("OUT[0]"), component("get_value"), port("PATH"), 2);
+        connect(component("split_list"), port("OUT[1]"), component("flatten_paths"), port("IN"));
+        connect(component("flatten_paths"), port("OUT"), component("set_value"), port("PATH"));
+        connect(component("get_value"), port("OUT"), component("flatten_values"), port("IN"));
+        connect(component("flatten_values"), port("OUT"), component("set_value"), port("VALUE"));
+        initialize("0,1", component("split_list"), port("SEL"));
+        initialize("get-from, mapping", component("split_map"), port("SEL"));
+        initialize("mapping.json", component("read_mapping"), port("IN"));
+        connect(component("read_files"), port("OUT"), component("replace_references"), port("IN"));
+        connect(component("replace_references"), port("OUT"), component("get_value"), port("IN"));
+        connect(component("to_string_2"), port("OUT"), component("ZMQ_send"), port("IN"));
+        connect(component("ZMQ_send"), port("OUT"), component("to_console_3"), port("IN"));
+        connect(component("split_map"), port("OUT[0]"), component("read_files"), port("IN"));
+        initialize("tcp://10.10.26.34:6666", component("ZMQ_send"), port("ADDRESS"));
     }
 
     protected void defineMappingTest(){

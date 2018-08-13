@@ -1,0 +1,30 @@
+<?xml version="1.0"?> 
+ <drawfbp_file xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:noNamespaceSchemaLocation="https://github.com/jpaulm/drawfbp/blob/master/lib/drawfbp_file.xsd"><net> <desc> </desc> <complang>Java</complang> <clicktogrid>true</clicktogrid> 
+<blocks><block> <x> 106 </x> <y> 189 </y> <id> 1 </id> <type>B</type> <width>92</width> <height>64</height> <description>read mapping</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.JsonFileToPColl</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 700 </x> <y> 540 </y> <id> 34 </id> <type>O</type> <width>760</width> <height>744</height> <description>Enclosure can be deleted</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+
+<subnetports><subnetport> <y>705</y> <name>template</name> <side>R</side><substreamsensitive>false</substreamsensitive></subnetport> 
+<subnetport> <y>203</y> <name>mapping</name> <side>L</side><substreamsensitive>false</substreamsensitive></subnetport> 
+</subnetports></block> 
+<block> <x> 700 </x> <y> 540 </y> <id> 40 </id> <type>B</type> <width>92</width> <height>64</height> <description>create-env-test-subnet.drw</description> <diagramfilename> </diagramfilename> <multiplex>false</multiplex><invisible>false</invisible><issubnet>true</issubnet> 
+</block> 
+<block> <x> 1162 </x> <y> 955 </y> <id> 12 </id> <type>B</type> <width>92</width> <height>64</height> <description>to console 3</description> <blockclassname>C:/Users/berg.ZALF-AD/ownCloud/zalf/fbp/javafbp-4.1.0.jar!com.jpaulmorrison.fbp.core.components.misc.WriteToConsole</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 110 </x> <y> 78 </y> <id> 16 </id> <type>I</type> <width>103</width> <height>18</height> <description>mapping.json</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 1162 </x> <y> 823 </y> <id> 19 </id> <type>B</type> <width>92</width> <height>64</height> <description>to string 2</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.ToJsonString</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 1203 </x> <y> 572 </y> <id> 26 </id> <type>B</type> <width>92</width> <height>64</height> <description>read template</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.JsonFileToPColl</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+<block> <x> 1200 </x> <y> 447 </y> <id> 27 </id> <type>I</type> <width>145</width> <height>18</height> <description>env-template.json</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+</block> 
+</blocks> <connections>
+<connection> <fromx>1201</fromx> <fromy>453</fromy> <tox>1204</tox> <toy>540</toy> <fromid>27</fromid> <toid>26</toid> <id>32</id> <endsatline>false</endsatline><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>105</fromx> <fromy>221</fromy> <tox>654</tox> <toy>540</toy> <fromid>1</fromid> <toid>40</toid> <id>1</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>1202</fromx> <fromy>604</fromy> <tox>654</tox> <toy>540</toy> <fromid>26</fromid> <toid>40</toid> <id>33</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>COLL</downstreamport></connection> 
+<connection> <fromx>746</fromx> <fromy>540</fromy> <tox>1115</tox> <toy>825</toy> <fromid>40</fromid> <toid>19</toid> <id>37</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>113</fromx> <fromy>85</fromy> <tox>106</tox> <toy>157</toy> <fromid>16</fromid> <toid>1</toid> <id>18</id> <endsatline>false</endsatline><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>1164</fromx> <fromy>855</fromy> <tox>1156</tox> <toy>927</toy> <fromid>19</fromid> <toid>12</toid> <id>22</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
+</connections> </net> </drawfbp_file>
