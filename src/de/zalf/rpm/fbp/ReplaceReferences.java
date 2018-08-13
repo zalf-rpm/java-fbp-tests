@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@ComponentDescription("Replace references to 'functions' in origIn representation of a JSON object")
+@ComponentDescription("Replace references to 'functions' in coll representation of a JSON object")
 @InPort(value = "IN", description = "Map representation of a JSON object", type = PMap.class)
 @OutPorts({
         @OutPort(value = "OUT", description = "Map representation of JSON object", type = PMap.class),
@@ -274,7 +274,7 @@ public class ReplaceReferences  extends Component {
 
     @Override
     protected void execute() {
-        //we got a valid origIn, try to set values
+        //we got a valid coll, try to set values
         Packet ip;
         while ((ip = inPort.receive()) != null) {
             PMap<String, Object> m = (PMap<String, Object>)ip.getContent();

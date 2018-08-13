@@ -14,7 +14,7 @@
 	"get-from": "crop.json",
 	"set-to": "env-template.json",
 	"mapping": [
-		["CropParameters", "userCropParameters"],
+		["CropParameters", ["params", "userCropParameters"]],
 		["cropRotation", "cropRotation"],
 		["cropRotations", "cropRotations"]
 	]
@@ -23,11 +23,11 @@
 	"get-from": "site.json",
 	"set-to": "env-template.json",
 	"mapping": [
-		["EnvironmentParameters", "userEnvironmentParameters"],
-		["SoilMoistureParameters", "userSoilMoistureParameters"],
-		["SoilTemperatureParameters", "userSoilTemperatureParameters"],
-		["SoilTransportParameters", "userSoilTransportParameters"],
-		["SoilOrganicParameters", "userSoilOrganicParameters"],
-		["SiteParameters", "siteParameters"]
+		["EnvironmentParameters", ["params", "userEnvironmentParameters"]],
+		["SoilMoistureParameters", ["params", "userSoilMoistureParameters"]],
+		["SoilTemperatureParameters", ["params", "userSoilTemperatureParameters"]],
+		["SoilTransportParameters", ["params", "userSoilTransportParameters"]],
+		["SoilOrganicParameters", ["params", "userSoilOrganicParameters"]],
+		["SiteParameters", ["params", "siteParameters"]]
 	]
 }]

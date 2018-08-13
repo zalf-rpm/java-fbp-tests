@@ -1,6 +1,7 @@
 package de.zalf.rpm.fbp;
 
 import com.jpaulmorrison.fbp.core.engine.*;
+import org.pcollections.Empty;
 
 import java.util.List;
 

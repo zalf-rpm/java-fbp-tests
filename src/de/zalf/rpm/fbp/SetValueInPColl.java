@@ -60,11 +60,13 @@ public class SetValueInPColl extends Component {
                     if(pathLevel == valueLevel) {
                         outPort.send(create(coll));
                         receiveNextColl = true;
+                        receiveNextValue = true;
                         valueEarlyClose = false;
                     } else {
                         receiveNextPath = false;
                         pathEarlyClose = true;
                     }
+                    return;
                 } else
                     break;
             }
@@ -93,6 +95,7 @@ public class SetValueInPColl extends Component {
                     if (errorPort.isConnected())
                         errorPort.send(create("(Close)-Brackets have no semantics for COLL port! Ignoring close bracket."));
                     drop(cp);
+                    return;
                 } else
                     break;
             }
@@ -125,12 +128,13 @@ public class SetValueInPColl extends Component {
                     // (if both substreams have different lengths)
                     if(valueLevel == pathLevel) {
                         outPort.send(create(coll));
-                        receiveNextColl = true;
+                        receiveNextColl = receiveNextPath = true;
                         pathEarlyClose = false;
                     } else {
                         receiveNextValue = false;
                         valueEarlyClose = true;
                     }
+                    return;
                 } else
                     break;
             }
@@ -153,7 +157,7 @@ public class SetValueInPColl extends Component {
         if(path == null || coll == null || value == null)
             return;
 
-        //to continue all values have to be in synch = path fits to value and there's a coll, then the map can be updated
+        //to continue all values have to be in sync = path fits to value and there's a coll, then the map can be updated
         if(receiveNextPath || receiveNextColl || receiveNextValue)
             return;
 

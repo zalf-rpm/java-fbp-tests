@@ -13,82 +13,92 @@ import org.pcollections.*;
 })
 @OutPorts({
         @OutPort(value = "OUT", description = "The requested value"),
-        @OutPort(value = "PASS", description = "The original PMap or PVector passed through", optional = true),
         @OutPort(value = "ERROR", description = "Error message", type = String.class, optional = true)
 })
 public class GetValueFromColl extends Component {
-    InputPort inPort;
-    InputPort pathPort;
-    OutputPort outPort;
-    OutputPort passPort;
-    OutputPort errorPort;
+    private InputPort inPort;
+    private InputPort pathPort;
+    private OutputPort outPort;
+    private OutputPort errorPort;
 
-    PVector path;
-    int pathLevel = 0;
+    private PVector path;
+    private boolean receiveNextPath = true;
+    private int pathLevel = 0;
 
-    Object origIn;
-    int inLevel = 0;
-    boolean sendInOpenBracket = false;
+    private Object coll;
+    private boolean receiveNextColl = true;
+
+    private void tryReceivingPath(){
+        //allow receives only if a new path is requested
+        if(receiveNextPath) {
+            Packet pp;
+            while((pp = pathPort.receive()) != null) {
+                if(pp.getType() == Packet.OPEN){
+                    pathLevel++;
+                    drop(pp);
+                    outPort.send(create(Packet.OPEN, ""+pathLevel));
+                } else if(pp.getType() == Packet.CLOSE){
+                    pathLevel--;
+                    drop(pp);
+                    outPort.send(create(Packet.CLOSE, ""+pathLevel));
+                    receiveNextColl = true;
+                    return;
+                } else
+                    break;
+            }
+
+            if(pp != null) {
+                Object p = pp.getContent();
+                if(p instanceof String)
+                    path = Empty.vector().plus(p);
+                else
+                    path = TreePVector.from((List)pp.getContent());
+                drop(pp);
+                receiveNextPath = false;
+            }
+        }
+    }
+
+    private void tryReceivingColl(){
+        if(receiveNextColl) {
+            Packet cp;
+            while((cp = inPort.receive()) != null) {
+                if (cp.getType() == Packet.OPEN) {
+                    if (errorPort.isConnected())
+                        errorPort.send(create("(Open)-Brackets have no semantics for IN port! Ignoring open bracket."));
+                    drop(cp);
+                } else if (cp.getType() == Packet.CLOSE) {
+                    if (errorPort.isConnected())
+                        errorPort.send(create("(Close)-Brackets have no semantics for IN port! Ignoring close bracket."));
+                    drop(cp);
+                    return;
+                } else
+                    break;
+            }
+
+            if(cp != null) {
+                coll = cp.getContent();
+                drop(cp);
+                receiveNextColl = false;
+            }
+        }
+    }
+
 
     @Override
     protected void execute() {
+        tryReceivingPath();
+        tryReceivingColl();
 
-        //receive new path if possible
-        if(pathLevel >= inLevel || path.isEmpty()) {
-            Packet pp = pathPort.receive();
-            if (pp == null)
-                return;
+        //if fields aren't yet initialized we can't continue
+        if(path == null || coll == null)
+            return;
 
-            if(pp.getType() == Packet.OPEN){
-                pathLevel++;
-                drop(pp);
-                sendInOpenBracket = true;
-                pp = pathPort.receive();
-                if(pp == null)
-                    return;
-            } else if(pp.getType() == Packet.CLOSE){
-                pathLevel--;
-                drop(pp);
-                outPort.send(create(Packet.CLOSE, ""));
-                pp = pathPort.receive();
-                if(pp == null)
-                    return;
-            }
+        //to continue all values have to be in sync
+        if(receiveNextPath || receiveNextColl)
+            return;
 
-            Object p = pp.getContent();
-            if(p instanceof String)
-                path = Empty.vector().plus(p);
-            else
-                path = TreePVector.from((List) pp.getContent());
-            drop(pp);
-        }
-
-        //receive new origIn if possible
-        if(inLevel >= pathLevel || origIn == null) {
-            //try to read a origIn packet
-            Packet mp = inPort.receive();
-            if (mp == null)
-                return;
-
-            if (mp.getType() == Packet.OPEN) {
-                inLevel++;
-                drop(mp);
-                mp = inPort.receive();
-                if (mp == null)
-                    return;
-            } else if (mp.getType() == Packet.CLOSE) {
-                inLevel--;
-                drop(mp);
-                mp = inPort.receive();
-                if (mp == null)
-                    return;
-            }
-
-            origIn = mp.getContent();
-            drop(mp);
-        }
-
-        Object o  = origIn;
+        Object o  = coll;
         boolean result = false;
         PVector prevPath = Empty.vector();
         for(Object k : path) {
@@ -100,7 +110,7 @@ public class GetValueFromColl extends Component {
                         o = l.get(key);
                         result = true;
                     } else if(key == -1){
-                        o = origIn;
+                        o = coll;
                         result = true;
                     }
                     else if(errorPort.isConnected()) {
@@ -119,7 +129,7 @@ public class GetValueFromColl extends Component {
                         o = m.get(key);
                         result = true;
                     } else if(key == "__all__"){
-                        o = origIn;
+                        o = coll;
                         result = true;
                     }
                     else if(errorPort.isConnected()) {
@@ -137,15 +147,8 @@ public class GetValueFromColl extends Component {
             prevPath = prevPath.plus(k);
         }
 
-        if(sendInOpenBracket){
-            outPort.send(create(Packet.OPEN, ""));
-            sendInOpenBracket = false;
-        }
-
         outPort.send(create(result ? o : ""));
-        if(passPort.isConnected())
-            passPort.send(create(origIn));
-
+        receiveNextPath = true;
     }
 
     @Override
@@ -153,7 +156,6 @@ public class GetValueFromColl extends Component {
         inPort = openInput("IN");
         pathPort = openInput("PATH");
         outPort = openOutput("OUT");
-        passPort = openOutput("PASS");
         errorPort = openOutput("ERROR");
     }
 }

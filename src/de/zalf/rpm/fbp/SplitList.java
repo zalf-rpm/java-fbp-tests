@@ -8,7 +8,7 @@ import java.util.List;
 @ComponentDescription("Split a List by selecting elements and forwarding them in order to the array OUT")
 @InPorts({
         @InPort(value = "SEL", description = "List or String (separated by ,) with the selector keys"),
-        @InPort(value = "IN", description = "List", type = List.class),
+        @InPort(value = "IN", description = "List"),//, type = List.class),
 })
 @OutPorts({
         @OutPort(value = "OUT", description = "The selected elements from the list in IN", arrayPort = true),
@@ -20,6 +20,8 @@ public class SplitList extends Component {
     OutputPort[] outPortArray;
 
     List<Integer> indices;
+
+    int substreamLevel = 0;
 
     @Override
     protected void execute() {
@@ -44,6 +46,15 @@ public class SplitList extends Component {
 
         Packet ip;
         while((ip = inPort.receive()) != null){
+            if(ip.getType() != Packet.NORMAL){
+                for(int i = 0; i < indices.size(); i++){
+                    if(i < outPortArray.length)
+                        outPortArray[i].send(create(ip.getType(), "" + substreamLevel));
+                }
+                drop(ip);
+                continue;
+            }
+
             List l = (List)ip.getContent();
             drop(ip);
             int size = l.size();
