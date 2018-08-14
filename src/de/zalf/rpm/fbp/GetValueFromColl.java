@@ -13,13 +13,15 @@ import org.pcollections.*;
 })
 @OutPorts({
         @OutPort(value = "OUT", description = "The requested value"),
-        @OutPort(value = "ERROR", description = "Error message", type = String.class, optional = true)
+        @OutPort(value = "ERROR", description = "Error message", type = String.class, optional = true),
+        @OutPort(value = "PASS", description = "The original coll passed through", optional = true)
 })
 public class GetValueFromColl extends Component {
     private InputPort inPort;
     private InputPort pathPort;
     private OutputPort outPort;
     private OutputPort errorPort;
+    private OutputPort passPort;
 
     private PVector path;
     private boolean receiveNextPath = true;
@@ -78,7 +80,10 @@ public class GetValueFromColl extends Component {
 
             if(cp != null) {
                 coll = cp.getContent();
-                drop(cp);
+                if(passPort.isConnected())
+                    passPort.send(cp);
+                else
+                    drop(cp);
                 receiveNextColl = false;
             }
         }
@@ -157,5 +162,6 @@ public class GetValueFromColl extends Component {
         pathPort = openInput("PATH");
         outPort = openOutput("OUT");
         errorPort = openOutput("ERROR");
+        passPort = openOutput("PASS");
     }
 }

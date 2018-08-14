@@ -28,7 +28,7 @@ references</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-t
 </block> 
 <block> <x> 981 </x> <y> 722 </y> <id> 53 </id> <type>B</type> <width>92</width> <height>64</height> <description>ZMQ send</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.ZeroMQOutProxy</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 
-<block> <x> 755 </x> <y> 724 </y> <id> 54 </id> <type>I</type> <width>149</width> <height>18</height> <description>tcp://10.10.26.34:66664</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+<block> <x> 755 </x> <y> 724 </y> <id> 54 </id> <type>I</type> <width>141</width> <height>18</height> <description>tcp://10.10.26.34:6666</description> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 
 <block> <x> 279 </x> <y> 236 </y> <id> 24 </id> <type>B</type> <width>92</width> <height>64</height> <description>read files</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.JsonFileToPColl</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 
@@ -67,4 +67,5 @@ references</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-t
 <connection> <fromx>985</fromx> <fromy>754</fromy> <tox>985</tox> <toy>848</toy> <fromid>53</fromid> <toid>12</toid> <id>57</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
 <connection> <fromx>277</fromx> <fromy>91</fromy> <tox>274</tox> <toy>203</toy> <fromid>3</fromid> <toid>24</toid> <id>27</id> <endsatline>false</endsatline><upstreamport>OUT[0]</upstreamport><downstreamport>IN</downstreamport></connection> 
 <connection> <fromx>828</fromx> <fromy>726</fromy> <tox>936</tox> <toy>728</toy> <fromid>54</fromid> <toid>53</toid> <id>59</id> <endsatline>false</endsatline><downstreamport>ADDRESS</downstreamport></connection> 
+<connection> <fromx>786</fromx> <fromy>715</fromy> <tox>-1</tox> <toy>-1</toy> <fromid>54</fromid> <toid>-1</toid> <id>60</id> <endsatline>false</endsatline></connection> 
 </connections> </net> </drawfbp_file>

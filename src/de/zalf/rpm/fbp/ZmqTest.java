@@ -15,8 +15,30 @@ public class ZmqTest extends Network {
         //defineGetValueTest();
         //defineSetValueTest();
         //defineMappingTest();
-        defineCreateEnvTest();
+        //defineCreateEnvTest();
+        defineClimateCSV2JSONTest();
     }
+
+    protected void defineClimateCSV2JSONTest(){
+        component("read_file_into_lines",com.jpaulmorrison.fbp.core.components.io.ReadFile.class);
+        component("to_console",com.jpaulmorrison.fbp.core.components.misc.WriteToConsole.class);
+        component("toString()",de.zalf.rpm.fbp.ToString.class);
+        component("read_sim.json",de.zalf.rpm.fbp.JsonFileToPColl.class);
+        component("get_csv_options",de.zalf.rpm.fbp.GetValueFromColl.class);
+        component("split_line",de.zalf.rpm.fbp.SplitString.class);
+        component("get_separator",de.zalf.rpm.fbp.GetValueFromColl.class);
+        initialize("climate.csv", component("read_file_into_lines"), port("SOURCE"));
+        initialize("sim.json", component("read_sim.json"), port("IN"));
+        connect(component("read_sim.json"), port("OUT"), component("get_csv_options"), port("IN"));
+        initialize("climate.csv-options", component("get_csv_options"), port("PATH"));
+        connect(component("get_csv_options"), port("OUT"), component("get_separator"), port("IN"));
+        initialize("csv-separator", component("get_separator"), port("PATH"));
+        connect(component("get_separator"), port("OUT"), component("split_line"), port("AT"));
+        connect(component("read_file_into_lines"), port("OUT"), component("split_line"), port("IN"));
+        connect(component("split_line"), port("OUT"), component("toString()"), port("IN"));
+        connect(component("toString()"), port("OUT"), component("to_console"), port("IN"));
+    }
+
 
     protected void defineCreateEnvTest(){
         component("read_mapping",de.zalf.rpm.fbp.JsonFileToPColl.class);
