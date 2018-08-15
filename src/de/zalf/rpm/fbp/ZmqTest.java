@@ -21,12 +21,23 @@ public class ZmqTest extends Network {
 
     protected void defineClimateCSV2JSONTest(){
         component("read_file_into_lines",com.jpaulmorrison.fbp.core.components.io.ReadFile.class);
-        component("to_console",com.jpaulmorrison.fbp.core.components.misc.WriteToConsole.class);
-        component("toString()",de.zalf.rpm.fbp.ToString.class);
         component("read_sim.json",de.zalf.rpm.fbp.JsonFileToPColl.class);
         component("get_csv_options",de.zalf.rpm.fbp.GetValueFromColl.class);
         component("split_line",de.zalf.rpm.fbp.SplitString.class);
         component("get_separator",de.zalf.rpm.fbp.GetValueFromColl.class);
+        component("to_console",com.jpaulmorrison.fbp.core.components.misc.WriteToConsole.class);
+        component("toString()",de.zalf.rpm.fbp.ToString.class);
+        component("select_header_lines",de.zalf.rpm.fbp.SelectNthIP.class);
+        component("get_#_of_headerlines",de.zalf.rpm.fbp.GetValueFromColl.class);
+        component("select_header_line",de.zalf.rpm.fbp.SelectNthIP.class);
+        component("split_data_into_streams",de.zalf.rpm.fbp.SplitList.class);
+        component("to_list_of_dates",de.zalf.rpm.fbp.ToList.class);
+        component("to_list_of_tmins",de.zalf.rpm.fbp.ToList.class);
+        component("to_list__of_tavgs",de.zalf.rpm.fbp.ToList.class);
+        component("drop_tmins",de.zalf.rpm.fbp.Sink.class);
+        component("drop_tavgs",de.zalf.rpm.fbp.Sink.class);
+        component("drop_sim",de.zalf.rpm.fbp.Sink.class);
+        component("drop_options",de.zalf.rpm.fbp.Sink.class);
         initialize("climate.csv", component("read_file_into_lines"), port("SOURCE"));
         initialize("sim.json", component("read_sim.json"), port("IN"));
         connect(component("read_sim.json"), port("OUT"), component("get_csv_options"), port("IN"));
@@ -35,8 +46,22 @@ public class ZmqTest extends Network {
         initialize("csv-separator", component("get_separator"), port("PATH"));
         connect(component("get_separator"), port("OUT"), component("split_line"), port("AT"));
         connect(component("read_file_into_lines"), port("OUT"), component("split_line"), port("IN"));
-        connect(component("split_line"), port("OUT"), component("toString()"), port("IN"));
         connect(component("toString()"), port("OUT"), component("to_console"), port("IN"));
+        connect(component("split_line"), port("OUT"), component("select_header_lines"), port("IN"));
+        connect(component("get_#_of_headerlines"), port("OUT"), component("select_header_lines"), port("COUNT"));
+        initialize("no-of-climate-file-header-lines", component("get_#_of_headerlines"), port("PATH"));
+        connect(component("select_header_lines"), port("ACC"), component("select_header_line"), port("IN"));
+        connect(component("select_header_lines"), port("REJ"), component("split_data_into_streams"), port("IN"));
+        initialize("0,1,2", component("split_data_into_streams"), port("SEL"));
+        connect(component("split_data_into_streams"), port("OUT[0]"), component("to_list_of_dates"), port("IN"));
+        connect(component("split_data_into_streams"), port("OUT[1]"), component("to_list_of_tmins"), port("IN"));
+        connect(component("split_data_into_streams"), port("OUT[2]"), component("to_list__of_tavgs"), port("IN"));
+        connect(component("to_list_of_dates"), port("OUT"), component("toString()"), port("IN"));
+        connect(component("to_list_of_tmins"), port("OUT"), component("drop_tmins"), port("IN"));
+        connect(component("to_list__of_tavgs"), port("OUT"), component("drop_tavgs"), port("IN"));
+        connect(component("get_separator"), port("PASS"), component("get_#_of_headerlines"), port("IN"));
+        connect(component("get_csv_options"), port("PASS"), component("drop_sim"), port("IN"));
+        connect(component("get_#_of_headerlines"), port("PASS"), component("drop_options"), port("IN"));
     }
 
 
