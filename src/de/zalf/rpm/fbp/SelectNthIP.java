@@ -23,8 +23,10 @@ public class SelectNthIP extends Component {
     private OutputPort accPort;
     private OutputPort rejPort;
 
-    private int nth = -1;
+    private int nth = 1;
+    private boolean nthReceived = false;
     private int count = -1;
+    private boolean countReceived = false;
 
     private Integer receiveIntegerFromPort(InputPort port){
         Integer i = null;
@@ -34,7 +36,7 @@ public class SelectNthIP extends Component {
 
             Object o = p.getContent();
             drop(p);
-            System.out.println(Thread.currentThread().getName() + ": closing port " + port.getName());
+            //System.out.println(Thread.currentThread().getName() + ": closing port " + port.getName());
             port.close();
 
             if (o instanceof String) {
@@ -46,58 +48,57 @@ public class SelectNthIP extends Component {
             } else if (Integer.class.isAssignableFrom(o.getClass()))
                 i = (Integer) o;
 
-            System.out.println(Thread.currentThread().getName() + ": received on " + port.getName() + ": " + i);
+            //System.out.println(Thread.currentThread().getName() + ": received on " + port.getName() + ": " + i);
         }
 
         return i;
     }
 
-    int packetCount = 0;
-
     @Override
     protected void execute() {
 
-        if(Thread.currentThread().getName() == "select_header_lines")
-            push(create("x"));
+        //if(Thread.currentThread().getName() == "select_header_lines")
+        //    push(create("x"));
 
-        if(nthPort.isClosed())
-            nth = 1;
-        else {
+        if(!nthReceived && nthPort.isClosed()) {
+            //System.out.println(Thread.currentThread().getName() + ": nthPort is already closed: nthPort.isClosed(): " + nthPort.isClosed());
+            nthReceived = true; //use default
+        }
+        else if(!nthReceived){
+            //System.out.println(Thread.currentThread().getName() + ": trying to receive nth on NTH");
             Integer i = receiveIntegerFromPort(nthPort);
             if (i != null && i > 0)
                 nth = i;
+            nthReceived = true;
         }
-        System.out.println(Thread.currentThread().getName() + ": countPort.isClosed(): " + countPort.isClosed());
-        if(countPort.isClosed()) {
-            System.out.println(Thread.currentThread().getName() + ": setting count = 1 and countPort.isClosed(): " + countPort.isClosed());
-            count = 1;
-        } else {
-            System.out.println(Thread.currentThread().getName() + ": trying to receive count on COUNT");
+        if(!countReceived && countPort.isClosed()) {
+            //System.out.println(Thread.currentThread().getName() + ": countPort is already closed: countPort.isClosed(): " + countPort.isClosed());
+            countReceived = true; // use default;
+        } else if(!countReceived){
+            //System.out.println(Thread.currentThread().getName() + ": trying to receive count on COUNT");
             Integer i = receiveIntegerFromPort(countPort);
             if (i != null && i > -1)
                 count = i;
+            countReceived = true;
         }
-        if(nth < 0 || count < 0)
-            return;
 
         boolean accConnected = accPort.isConnected();
         boolean rejConnected = rejPort.isConnected();
 
         Packet ip;
-        //int packetCount = 0;
-        //while((ip = inPort.receive()) != null){
-        if((ip = inPort.receive()) != null){
+        int packetCount = 0;
+        while((ip = inPort.receive()) != null){
             packetCount++;
 
             if(accConnected && packetCount >= nth && count > (packetCount - nth)) {
                 accPort.send(ip);
-                System.out.println(Thread.currentThread().getName() + ": IP sent on ACC");
+                //System.out.println(Thread.currentThread().getName() + ": IP sent on ACC");
             } else if(rejConnected) {
                 rejPort.send(ip);
-                System.out.println(Thread.currentThread().getName() + ": IP sent on REJ");
+                //System.out.println(Thread.currentThread().getName() + ": IP sent on REJ");
             } else {
                 drop(ip);
-                System.out.println(Thread.currentThread().getName() + ": IP dropped");
+                //System.out.println(Thread.currentThread().getName() + ": IP dropped");
             }
         }
     }

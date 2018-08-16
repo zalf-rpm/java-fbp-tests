@@ -13,7 +13,6 @@ import java.util.List;
 @OutPorts({
         @OutPort(value = "OUT", description = "a list of the split parts of the string", type = List.class),
 })
-
 public class SplitString extends Component {
     private InputPort inPort;
     private InputPort atPort;
@@ -27,19 +26,17 @@ public class SplitString extends Component {
             Packet sp = atPort.receive();
             if (sp == null)
                 return;
-            System.out.println("first");
             splitAtRegex = (String)sp.getContent();
             drop(sp);
             atPort.close();
         }
 
-        System.out.println("second");
         Packet ip;
         while((ip = inPort.receive()) != null){
             String s = (String)ip.getContent();
             drop(ip);
             outPort.send(create(Arrays.asList(s.split(splitAtRegex))));
-            System.out.println(Thread.currentThread().getName() + ": sent on IN: " + s);
+            //System.out.println(Thread.currentThread().getName() + ": sent on IN: " + s);
         }
     }
 

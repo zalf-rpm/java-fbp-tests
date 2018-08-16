@@ -14,7 +14,7 @@ import org.pcollections.*;
 @OutPorts({
         @OutPort(value = "OUT", description = "The requested value"),
         @OutPort(value = "ERROR", description = "Error message", type = String.class, optional = true),
-        @OutPort(value = "PASS", description = "The original coll passed through")//, optional = true)
+        @OutPort(value = "PASS", description = "The original coll passed through", optional = true)
 })
 public class GetValueFromColl extends Component {
     private InputPort inPort;
@@ -82,7 +82,7 @@ public class GetValueFromColl extends Component {
                 coll = cp.getContent();
                 if(passPort.isConnected()) {
                     passPort.send(cp);
-                    System.out.println(Thread.currentThread().getName() + ": sent on PASS: " + coll);
+                    //System.out.println(Thread.currentThread().getName() + ": sent on PASS: " + coll);
                 }
                 else
                     drop(cp);
@@ -155,7 +155,7 @@ public class GetValueFromColl extends Component {
         }
 
         outPort.send(create(result ? o : ""));
-        System.out.println(Thread.currentThread().getName() + ": sent on OUT: " + o);
+        //System.out.println(Thread.currentThread().getName() + ": sent on OUT: " + o);
         receiveNextPath = true;
     }
 
