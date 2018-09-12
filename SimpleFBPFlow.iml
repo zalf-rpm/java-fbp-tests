@@ -12,5 +12,9 @@
     <orderEntry type="library" name="com.fasterxml.jackson.core:jackson-databind:2.9.6" level="project" />
     <orderEntry type="library" name="org.pcollections:pcollections:3.0.2" level="project" />
     <orderEntry type="library" name="com.fasterxml.jackson.datatype:jackson-datatype-pcollections:2.9.6" level="project" />
+    <orderEntry type="library" name="com.fasterxml.jackson.dataformat:jackson-dataformat-csv:2.9.6" level="project" />
+    <orderEntry type="library" name="KotlinJavaRuntime" level="project" />
+    <orderEntry type="library" name="com.opencsv:opencsv:4.2" level="project" />
+    <orderEntry type="library" name="net.java.dev.jna:jna:4.5.2" level="project" />
   </component>
 </module>

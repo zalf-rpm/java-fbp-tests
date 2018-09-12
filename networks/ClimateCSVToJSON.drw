@@ -58,7 +58,7 @@ of tavgs</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tes
 </block> 
 <block> <x> 563 </x> <y> 76 </y> <id> 41 </id> <type>B</type> <width>92</width> <height>64</height> <description>drop sim</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.Sink</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 
-<block> <x> 767 </x> <y> 239 </y> <id> 42 </id> <type>B</type> <width>92</width> <height>64</height> <description>drop options</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.Sink</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
+<block> <x> 767 </x> <y> 214 </y> <id> 42 </id> <type>B</type> <width>92</width> <height>64</height> <description>drop options</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tests\out\production\SimpleFBPFlow!de.zalf.rpm.fbp.Sink</blockclassname> <multiplex>false</multiplex><invisible>false</invisible><issubnet>false</issubnet> 
 </block> 
 </blocks> <connections>
 <connection> <fromx>139</fromx> <fromy>365</fromy> <tox>215</tox> <toy>365</toy> <fromid>4</fromid> <toid>1</toid> <id>1</id> <endsatline>false</endsatline><downstreamport>SOURCE</downstreamport></connection> 
@@ -84,5 +84,5 @@ of tavgs</description> <blockclassname>C:\Users\berg.ZALF-AD\GitHub\java-fbp-tes
 <connection> <fromx>798</fromx> <fromy>681</fromy> <tox>798</tox> <toy>772</toy> <fromid>35</fromid> <toid>38</toid> <id>29</id> <endsatline>false</endsatline><upstreamport>OUT</upstreamport><downstreamport>IN</downstreamport></connection> 
 <connection> <fromx>478</fromx> <fromy>241</fromy> <tox>556</tox> <toy>241</toy> <fromid>14</fromid> <toid>24</toid> <id>30</id> <endsatline>false</endsatline><upstreamport>PASS</upstreamport><downstreamport>IN</downstreamport></connection> 
 <connection> <fromx>436</fromx> <fromy>118</fromy> <tox>516</tox> <toy>76</toy> <fromid>8</fromid> <toid>41</toid> <id>31</id> <endsatline>false</endsatline><upstreamport>PASS</upstreamport><downstreamport>IN</downstreamport></connection> 
-<connection> <fromx>647</fromx> <fromy>234</fromy> <tox>720</tox> <toy>240</toy> <fromid>24</fromid> <toid>42</toid> <id>32</id> <endsatline>false</endsatline><upstreamport>PASS</upstreamport><downstreamport>IN</downstreamport></connection> 
+<connection> <fromx>647</fromx> <fromy>234</fromy> <tox>720</tox> <toy>215</toy> <fromid>24</fromid> <toid>42</toid> <id>32</id> <endsatline>false</endsatline><upstreamport>PASS</upstreamport><downstreamport>IN</downstreamport></connection> 
 </connections> </net> </drawfbp_file>
